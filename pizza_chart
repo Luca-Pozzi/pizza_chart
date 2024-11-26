@@ -11,7 +11,7 @@ from matplotlib.patches import PathPatch
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 total = [5,7,4]
-labels = ["Pizza", "Pizza", "Pizza"]
+labels = ["Margherita", "Margherita", "Margherita"]
 plt.title('Pizzas')
 plt.gca().axis("equal")
 wedges, texts = plt.pie(total, startangle=90, labels=labels,

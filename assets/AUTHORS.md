@@ -7,5 +7,7 @@ Below a detailed list of the authors.
 
 * [`pizza.png`](./pizza.png) | Pizza image from [Pizzart.it](http://www.pizzart.it/pizze.html), [Enrico Castellazzi Graphic Designer](https://www.enricocastellazzi.com/)
 * [`cheese.png`](https://www.flaticon.com/free-icons/melt) | Melt icons created by Nsit - Flaticon
+<br> The colors of the [`cheese.png`](./cheese.png) icon in this folder have been modified.
+
 * [`french_fries.png`](https://www.flaticon.com/free-icons/french-fries) | French fries icons created by riajulislam - Flaticon
 * [`wurstel.png`](https://www.flaticon.com/free-icons/isometric) | Isometric icons created by Ylivdesign - Flaticon
