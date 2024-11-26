@@ -5,7 +5,12 @@ The images to compose pizza toppings are mainly taken from [Flaticon](https://ww
 Below a detailed list of the authors.
 <!-- TODO. Add authors to the bottom of the graph/site footer. -->
 
+## Pizza
 * [`pizza.png`](./pizza.png) | Pizza image from [Pizzart.it](http://www.pizzart.it/pizze.html), [Enrico Castellazzi Graphic Designer](https://www.enricocastellazzi.com/)
+
+Other pizzas are created via the [`pizza_maker.ipynb`](./pizza_maker.ipynb) notebook using the below listed topping icons.
+
+## Toppings
 * [`cheese.png`](https://www.flaticon.com/free-icons/melt) | Melt icons created by Nsit - Flaticon
 <br> The colors of the [`cheese.png`](./cheese.png) icon in this folder have been modified.
 
