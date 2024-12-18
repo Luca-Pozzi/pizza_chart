@@ -1,6 +1,12 @@
 # Data
-data/*.jpg
-data/*.png
+data
+!data/PLACEHOLDER.md
+
+# Assets
+assets/pizzas
+!assets/pizzas/PLACEHOLDER.md
+assets/toppings
+!assets/toppings/PLACEHOLDER.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

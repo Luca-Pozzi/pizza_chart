@@ -11,8 +11,21 @@ Below a detailed list of the authors.
 Other pizzas are created via the [`pizza_maker.ipynb`](./pizza_maker.ipynb) notebook using the below listed topping icons.
 
 ## Toppings
+* [`anchovies.png`](https://www.flaticon.com/free-icons/anchovy) | Anchovy icons created by Freepik - Flaticon
+
+* [`arugala.png`](<https://www.flaticon.com/free-icons/salad) | Salad icons created by Park Jisun - Flaticon
+
+* [`capers.png`](https://www.flaticon.com/free-icons/caper) | Caper icons created by Freepik - Flaticon
+
 * [`cheese.png`](https://www.flaticon.com/free-icons/melt) | Melt icons created by Nsit - Flaticon
 <br> The colors of the [`cheese.png`](./cheese.png) icon in this folder have been modified.
 
 * [`french_fries.png`](https://www.flaticon.com/free-icons/french-fries) | French fries icons created by riajulislam - Flaticon
+
+* [`olives.png`](https://www.flaticon.com/free-icons/olive) | Olive icons created by bakar015 - Flaticon
+
+* [`pepperoni.png`](https://www.flaticon.com/free-icons/salami) | Salami icons created by Freepik - Flaticon
+
+* [`pomodorini.png`](https://www.flaticon.com/free-icons/tomato) | Tomato icons created by Imogen.Oh - Flaticon
+
 * [`wurstel.png`](https://www.flaticon.com/free-icons/isometric) | Isometric icons created by Ylivdesign - Flaticon
