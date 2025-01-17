@@ -6,9 +6,10 @@ Below a detailed list of the authors.
 <!-- TODO. Add authors to the bottom of the graph/site footer. -->
 
 ## Pizza
-* [`pizza.png`](./pizza.png) | Pizza image from [Pizzart.it](http://www.pizzart.it/pizze.html), [Enrico Castellazzi Graphic Designer](https://www.enricocastellazzi.com/)
+* [`margherita.png`](./pizzas/margherita.png) | Pizza image from [Pizzart.it](http://www.pizzart.it/pizze.html), [Enrico Castellazzi Graphic Designer](https://www.enricocastellazzi.com/)
+* [`marinara.png`](./pizzas/marinara.png)
 
-Other pizzas are created via the [`pizza_maker.ipynb`](./pizza_maker.ipynb) notebook using the below listed topping icons.
+Other pizzas are created via the [`pizza_maker.ipynb`](../pizza_maker.ipynb) notebook using the below listed topping icons.
 
 ## Toppings
 * [`anchovies.png`](https://www.flaticon.com/free-icons/anchovy) | Anchovy icons created by Freepik - Flaticon
