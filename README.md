@@ -2,8 +2,9 @@
 
 Pie chart, with a salty twist.
 
-> [!NOTE] The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. Icons used in this project are sourced from Flaticon and credited according to Flaticon’s attribution guidelines, which are listed in the [AUTHORS.md](./assets/AUTHORS.md) file.
-<br>These assets are used strictly for recreational purposes. If the content infringes on any rights or you would like it removed, please reach out, and it will be promptly taken down.
+> [!IMPORTANT] 
+> The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. Icons used in this project are sourced from Flaticon and credited according to Flaticon’s attribution guidelines, which are listed in the [AUTHORS.md](./assets/AUTHORS.md) file.
+> <br>These assets are used strictly for recreational purposes. If the content infringes on any rights or you would like it removed, please reach out, and it will be promptly taken down.
 
 ## How to use
 
