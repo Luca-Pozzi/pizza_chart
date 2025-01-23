@@ -1,5 +1,7 @@
 # Data
-data
+data/*.png
+data/*.pdf
+data/*.jpg
 !data/PLACEHOLDER.md
 
 # Assets
