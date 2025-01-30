@@ -22,7 +22,7 @@ Pizza charts can be plotted via the [pizza_chart.ipynb](pizza_chart.ipynb) noteb
 
 ### Report
 Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.xlsx](./data/data.xlsx) Excel file.
-The [`pizza_report.py`](./pizza_report.py) is under development (:construction_worker:). It gathers data from the Excel file to generate a Markdown summary of relevant stats regarding our pizza days.
+The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate a Markdown summary of relevant stats regarding our pizza days. See the last report at [`PIZZA_REPORT.md`](./PIZZA_REPORT.md).
 
 ## Author
 * Luca :envelope: [luca6.pozzi@mail.polimi.it](mailto:luca6.pozzi@mail.polimi.it)
