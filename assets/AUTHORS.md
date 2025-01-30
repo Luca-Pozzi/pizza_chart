@@ -35,4 +35,6 @@ Other pizzas are created via the [`pizza_maker.ipynb`](../pizza_maker.ipynb) not
 
 * [`pomodorini.png`](https://www.flaticon.com/free-icons/tomato) | Tomato icons created by Imogen.Oh - Flaticon
 
+* [`sausages.png`]("https://www.flaticon.com/free-icons/isometric" title="isometric icons") | Isometric icons created by Ylivdesign - Flaticon
+
 * [`wurstel.png`](https://www.flaticon.com/free-icons/isometric) | Isometric icons created by Ylivdesign - Flaticon
