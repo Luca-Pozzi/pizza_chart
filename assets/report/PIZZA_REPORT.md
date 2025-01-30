@@ -30,7 +30,7 @@
 
 &nbsp;
 
-<div style='text-align: left'> <h2>Last month
+<div style='text-align: right'> <h2>Last month
 </h2>30/12/2024 - 30/01/2025 </div>
 
 &nbsp;

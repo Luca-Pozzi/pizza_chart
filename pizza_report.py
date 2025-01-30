@@ -49,6 +49,8 @@ if __name__ == '__main__':
     
     # Create Markdown report
     f = open(os.path.join(root,
+                          'assets',
+                          'report',
                           'PIZZA_REPORT.md'), 
                           'w+'
             )
@@ -101,7 +103,7 @@ if __name__ == '__main__':
                         text=(now-pd.DateOffset(months=1)).strftime('%d/%m/%Y')+ 
                         ' - ' +
                         now.strftime('%d/%m/%Y'),
-                        align='left'
+                        align='right'
                         ))
     f.write(_empty_par(4))
 
