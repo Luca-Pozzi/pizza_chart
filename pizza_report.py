@@ -72,7 +72,8 @@ if __name__ == '__main__':
                        ))
     f.write(_empty_par(4))
     f.write(_align_text(header='Last time',
-                        text=df['Date'].max().strftime('%d/%m/%Y'),
+                        text='\n\n- - - - -\n\n' +
+                             df['Date'].max().strftime('%d/%m/%Y'),
                         align='left'
                         ))
     f.write(_empty_par(4))
@@ -98,10 +99,11 @@ if __name__ == '__main__':
                        ))
     f.write(_empty_par(4))
     f.write(_align_text(header='Last month',
-                        text=(now-pd.DateOffset(months=1)).strftime('%d/%m/%Y')+ 
-                        ' - ' +
-                        now.strftime('%d/%m/%Y'),
-                        align='right'
+                        text='\n\n- - - - -\n\n' +
+                            (now-pd.DateOffset(months=1)).strftime('%d/%m/%Y')+ 
+                            ' - ' +
+                            now.strftime('%d/%m/%Y'),
+                            align='right'
                         ))
     f.write(_empty_par(4))
 
@@ -149,7 +151,8 @@ if __name__ == '__main__':
                        ))
     f.write(_empty_par(4))
     f.write(_align_text(header='All time',
-                        text=df['Date'].min().strftime('%d/%m/%Y')+
+                        text='\n\n- - - - -\n\n' +
+                             df['Date'].min().strftime('%d/%m/%Y')+
                              ' - ' +
                              now.strftime('%d/%m/%Y'),
                         align='left'

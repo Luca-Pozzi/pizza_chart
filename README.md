@@ -25,6 +25,7 @@ Data collected during pizza days at [Politecnico di Milano - Polo Territoriale d
 The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate a Markdown summary of relevant stats regarding our pizza days. 
 
 See the last report in [`PIZZA_REPORT.md`](./PIZZA_REPORT.md).
+<br>To get a nicely formatted image from it, generate the Markdown report. Export it as HTML and add `<meta name="color-scheme" content="light dark" />` to the `<head>` tag for dark theme. Open the HTML with a browser and save it.
 
 ## Author
 * Luca :envelope: [luca6.pozzi@mail.polimi.it](mailto:luca6.pozzi@mail.polimi.it)
