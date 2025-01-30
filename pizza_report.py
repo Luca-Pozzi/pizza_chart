@@ -49,8 +49,6 @@ if __name__ == '__main__':
     
     # Create Markdown report
     f = open(os.path.join(root,
-                          'assets',
-                          'report',
                           'PIZZA_REPORT.md'), 
                           'w+'
             )

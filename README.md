@@ -24,11 +24,7 @@ Pizza charts can be plotted via the [pizza_chart_example.ipynb](pizza_chart_exam
 Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.xlsx](./data/data.xlsx) Excel file.
 The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate a Markdown summary of relevant stats regarding our pizza days. 
 
-See the last report [here](./assets/report/PIZZA_REPORT.html).
-
-When running [`pizza_report.py`](./pizza_report.py), the report will be added in [`assets/report`](./assets/report). Export the Markdown file to HTML and upload it to the same folder to update the data pointed by the present README.
-
-To change the visualization to dark mode, add `<meta name="color-scheme" content="light dark" />` to the HTML file `<head>` tag.
+See the last report in [`PIZZA_REPORT.md`](./PIZZA_REPORT.md).
 
 ## Author
 * Luca :envelope: [luca6.pozzi@mail.polimi.it](mailto:luca6.pozzi@mail.polimi.it)
