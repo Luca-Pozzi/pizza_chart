@@ -14,14 +14,20 @@ Other pizzas are created via the [`pizza_maker.ipynb`](../pizza_maker.ipynb) not
 ## Toppings
 * [`anchovies.png`](https://www.flaticon.com/free-icons/anchovy) | Anchovy icons created by Freepik - Flaticon
 
-* [`arugala.png`](<https://www.flaticon.com/free-icons/salad) | Salad icons created by Park Jisun - Flaticon
+* [`artichoke.png`](https://www.flaticon.com/free-icons/artichoke) | Artichoke icons created by Flat Icons - Flaticon
+
+* [`arugala.png`](https://www.flaticon.com/free-icons/salad) | Salad icons created by Park Jisun - Flaticon
 
 * [`capers.png`](https://www.flaticon.com/free-icons/caper) | Caper icons created by Freepik - Flaticon
 
 * [`cheese.png`](https://www.flaticon.com/free-icons/melt) | Melt icons created by Nsit - Flaticon
-<br> The colors of the [`cheese.png`](./cheese.png) icon in this folder have been modified.
+
+* [`bufala.png`](https://www.flaticon.com/free-icons/melt) | Melt icons created by Nsit - Flaticon
+<br> The colors of [`bufala.png`](./bufala.png) icon in this folder have been modified from the original [`cheese.png`](./cheese.png)
 
 * [`french_fries.png`](https://www.flaticon.com/free-icons/french-fries) | French fries icons created by riajulislam - Flaticon
+
+* [`ham.png`]("https://www.flaticon.com/free-icons/ham) | Ham icons created by iconixarPro - Flaticon
 
 * [`olives.png`](https://www.flaticon.com/free-icons/olive) | Olive icons created by bakar015 - Flaticon
 
