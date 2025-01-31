@@ -22,10 +22,17 @@ Pizza charts can be plotted via the [pizza_chart_example.ipynb](pizza_chart_exam
 
 ### Report
 Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.xlsx](./data/data.xlsx) Excel file.
-The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate a Markdown summary of relevant stats regarding our pizza days. 
+The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate summary charts regarding our pizza days. 
+The updated summary is displayed below. Individual charts are available in [`assets/charts`](./assets/charts/).
 
-See the last report in [`PIZZA_REPORT.md`](./PIZZA_REPORT.md).
-<br>To get a nicely formatted image from it, generate the Markdown report. Export it as HTML and add `<meta name="color-scheme" content="light dark" />` to the `<head>` tag for dark theme. Open the HTML with a browser and save it.
+<!-- Adaptation to color scheme taken from https://stackoverflow.com/questions/65413712/changing-readme-md-image-display-conditional-to-github-light-mode-dark-mode -->
+<br />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/charts/summary_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/charts/summary_dark.png">
+  <img alt="Summary charts of pizza days at WE-COBOT in either dark or light mode adapting to selected color scheme" src="./assets/charts/summary_dark.png">
+</picture>
+<br />
 
 ## Author
 * Luca :envelope: [luca6.pozzi@mail.polimi.it](mailto:luca6.pozzi@mail.polimi.it)
