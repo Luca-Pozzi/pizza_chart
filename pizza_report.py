@@ -1,9 +1,5 @@
 '''
 Generate an image with summary graphs of pizza orders.
-TODO.
-    - [x] create light and dark mode images
-    - [ ] add titles w/ dates
-    - [ ] paste the images together in a single image 
 '''
 
 import os
