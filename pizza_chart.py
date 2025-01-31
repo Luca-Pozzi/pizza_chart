@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import PathPatch
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-def plot_pizza_chart(order, title=None, cutoff=7.0, show=True, wedgeprops={},
-                    textprops={}):
+def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
+                    show=True):
     labels = []
     data = []
     stats = []
@@ -30,6 +30,13 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, show=True, wedgeprops={},
                         )
 
     # Create the pie chart
+    if dark_theme:
+        plt.style.use("dark_background")
+        edgecolor = '#0D1117' #'k'
+        # NOTE. The above dark grey is used to match the GitHub dark theme background.
+    else:
+        plt.style.use("default")
+        edgecolor = 'w'
     fig, ax = plt.subplots()
     if title:
         plt.title(title)
@@ -38,13 +45,13 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, show=True, wedgeprops={},
                          labels=[lab+'\n'+stat for lab, stat in zip(labels, stats)],
                          explode = [0.1] * len(labels),
                          wedgeprops = { 'linewidth': 2, 
-                                        "edgecolor" :'w',
+                                        "edgecolor": edgecolor,
                                         "fill":False,
-                                        **wedgeprops
+                                        #**wedgeprops
                                         },
-                         textprops={'color':"grey",
-                                    **textprops
-                                    }
+                         #textprops={'color':"grey",
+                         #           **textprops
+                         #           }
                             )
     # Display pizza textures in chart sectors
     for i in range(len(labels)):
