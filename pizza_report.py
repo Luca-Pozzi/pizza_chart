@@ -30,7 +30,8 @@ if __name__ == '__main__':
     
     # Plot pizza chart of last order
     df_last_time = df[['Pizza', '#']].loc[df['Date']==df['Date'].max()]
-    title=df['Date'].max().strftime("%d/%m/%Y")
+    title=('Last time\n' +
+          df['Date'].max().strftime("%d/%m/%Y"))
     order = [(row['Pizza'], row['#'])
             for __, row in df_last_time.iterrows()
             ]
@@ -51,9 +52,11 @@ if __name__ == '__main__':
     # Plot pizza chart of last month
     df_last_month = df[['Pizza', '#']].loc[df['Date']>(now-pd.DateOffset
     (months=1))]
-    title="{} - {}".format((now-pd.DateOffset(months=1)).strftime("%d/%m/%Y"),
+    title=('Last month\n' +
+          '{} - {}'.format((now-pd.DateOffset(months=1)).strftime("%d/%m/%Y"),
                            now.strftime("%d/%m/%Y")
                            )
+           )
     order = []
     for p in df_last_month['Pizza'].unique(): 
         order.append((p, 
@@ -76,9 +79,11 @@ if __name__ == '__main__':
     # TODO. Add 'last year' graph when data will span more than one year.
     
     # Plot pizza chart of all times
-    title="{} - {}".format(df['Date'].min().strftime("%d/%m/%Y"),
+    title=('All times\n' +
+          '{} - {}'.format(df['Date'].min().strftime("%d/%m/%Y"),
                            now.strftime("%d/%m/%Y")
-                           )    
+                           )
+           )   
     order = []
     for p in df['Pizza'].unique(): 
         order.append((p, 

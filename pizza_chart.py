@@ -39,7 +39,7 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
         edgecolor = 'w'
     fig, ax = plt.subplots()
     if title:
-        plt.title(title)
+        plt.title(title, fontdict={'fontsize': 18})
     plt.gca().axis("equal")
     wedges, __ = plt.pie(data, startangle=90, 
                          labels=[lab+'\n'+stat for lab, stat in zip(labels, stats)],
