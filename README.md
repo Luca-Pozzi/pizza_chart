@@ -6,6 +6,15 @@ Pie chart, with a salty twist.
 > The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. Icons used in this project are sourced from Flaticon and credited according to Flaticon’s attribution guidelines, which are listed in the [AUTHORS.md](./assets/AUTHORS.md) file.
 > <br>These assets are used strictly for recreational purposes. If the content infringes on any rights or you would like it removed, please reach out, and it will be promptly taken down.
 
+<!-- Adaptation to color scheme taken from https://stackoverflow.com/questions/65413712/changing-readme-md-image-display-conditional-to-github-light-mode-dark-mode -->
+<br />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/charts/summary_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/charts/summary_dark.png">
+  <img alt="Summary charts of pizza days at WE-COBOT in either dark or light mode adapting to selected color scheme" src="./assets/charts/summary_dark.png">
+</picture>
+<br />
+
 ## How to use
 
 ### Add a pizza
@@ -23,16 +32,7 @@ Pizza charts can be plotted via the [pizza_chart_example.ipynb](pizza_chart_exam
 ### Report
 Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.xlsx](./data/data.xlsx) Excel file.
 The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate summary charts regarding our pizza days. 
-The updated summary is displayed below. Individual charts are available in [`assets/charts`](./assets/charts/).
-
-<!-- Adaptation to color scheme taken from https://stackoverflow.com/questions/65413712/changing-readme-md-image-display-conditional-to-github-light-mode-dark-mode -->
-<br />
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/charts/summary_dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/charts/summary_dark.png">
-  <img alt="Summary charts of pizza days at WE-COBOT in either dark or light mode adapting to selected color scheme" src="./assets/charts/summary_dark.png">
-</picture>
-<br />
+The updated summary is displayed at the top of this [`README`](README.md). Individual charts are available in [`assets/charts`](./assets/charts/).
 
 ## Author
 * Luca :envelope: [luca6.pozzi@mail.polimi.it](mailto:luca6.pozzi@mail.polimi.it)
