@@ -25,6 +25,8 @@ Other pizzas are created via the [`pizza_maker.ipynb`](../pizza_maker.ipynb) not
 * [`bufala.png`](https://www.flaticon.com/free-icons/melt) | Melt icons created by Nsit - Flaticon
 <br> The colors of [`bufala.png`](./bufala.png) icon in this folder have been modified from the original [`cheese.png`](./cheese.png)
 
+* [`eggplants.png`]("https://www.flaticon.com/free-icons/eggplant") | Eggplant icons created by bakar015 - Flaticon
+
 * [`french_fries.png`](https://www.flaticon.com/free-icons/french-fries) | French fries icons created by riajulislam - Flaticon
 
 * [`ham.png`]("https://www.flaticon.com/free-icons/ham) | Ham icons created by iconixarPro - Flaticon
