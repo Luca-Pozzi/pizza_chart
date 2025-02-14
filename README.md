@@ -1,3 +1,5 @@
+<img align="left" height="80" src="./assets/logo/logo_cut.png" />
+
 # Pizza chart
 
 Pie chart, with a salty twist.
