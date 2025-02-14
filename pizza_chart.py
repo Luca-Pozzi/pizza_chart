@@ -63,6 +63,7 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
             _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.45)
             wedges[i].set_zorder(10)
         except FileNotFoundError:
+            print("File {} not found, '{}' slice will appear as empty".format(fn))
             continue
     if show:
         # Plot the figure
