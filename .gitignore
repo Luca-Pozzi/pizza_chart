@@ -5,6 +5,10 @@ data/*.jpg
 data/~$*.xlsx
 !data/PLACEHOLDER.md
 
+# Assets
+assets/pizzas/pics/*
+!assets/pizzas/pics/*.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

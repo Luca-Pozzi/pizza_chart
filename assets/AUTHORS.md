@@ -33,10 +33,14 @@ Other pizzas are created via the [`pizza_maker.ipynb`](../pizza_maker.ipynb) not
 
 * [`olives.png`](https://www.flaticon.com/free-icons/olive) | Olive icons created by bakar015 - Flaticon
 
+* [`onion.png`]("https://www.flaticon.com/free-icons/onion") | Onion icons created by Ylivdesign - Flaticon
+
 * [`pepperoni.png`](https://www.flaticon.com/free-icons/salami) | Salami icons created by Freepik - Flaticon
 
 * [`pomodorini.png`](https://www.flaticon.com/free-icons/tomato) | Tomato icons created by Imogen.Oh - Flaticon
 
 * [`sausages.png`]("https://www.flaticon.com/free-icons/isometric" title="isometric icons") | Isometric icons created by Ylivdesign - Flaticon
+
+* [`tuna.png`]("https://www.flaticon.com/free-icons/tuna") | Tuna icons created by Freepik - Flaticon
 
 * [`wurstel.png`](https://www.flaticon.com/free-icons/isometric) | Isometric icons created by Ylivdesign - Flaticon
