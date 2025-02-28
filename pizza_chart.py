@@ -7,7 +7,7 @@ from matplotlib.patches import PathPatch
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
-                    show=True):
+                    show=True, source='default'):
     labels = []
     data = []
     stats = []
@@ -54,16 +54,23 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
                          #           }
                             )
     # Display pizza textures in chart sectors
+    if not source == 'custom':
+        # Default images are prepended with '_'.
+        prefix = '_'
+    
     for i in range(len(labels)):
         try:
             fn = os.path.join("assets",
                             "pizzas",
-                            "{}.png".format(labels[i].lower().replace(" ", "_"))
+                            "{}{}.png".format(prefix,
+                                              labels[i].lower().replace(" ",
+                                                                        "_")
+                                             )
                             )
             _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.45)
             wedges[i].set_zorder(10)
         except FileNotFoundError:
-            print("File {} not found, '{}' slice will appear as empty".format(fn))
+            print("File {} not found, '{}' slice will appear as empty".format(fn, labels[i].lower()))
             continue
     if show:
         # Plot the figure

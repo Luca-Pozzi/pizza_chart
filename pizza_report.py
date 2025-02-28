@@ -11,7 +11,8 @@ import matplotlib.pyplot as plt
 from pizza_chart import plot_pizza_chart
 
 SHOW = False # set to True for debugging
-
+SOURCE = 'default'  # `default` or `custom`
+                
 if __name__ == '__main__':
     root = os.path.abspath(os.path.dirname(__file__))
     charts_dir = os.path.join(root, 'assets', 'charts')
@@ -34,7 +35,8 @@ if __name__ == '__main__':
     for dark_theme in [True, False]:
         fig_last_time = plot_pizza_chart(order, show=False,
                                          title=title,
-                                         dark_theme=dark_theme
+                                         dark_theme=dark_theme,
+                                         source=SOURCE
                                         )
         suffix = 'dark' if dark_theme else 'light'
         fpath = os.path.join(charts_dir, 
@@ -61,7 +63,8 @@ if __name__ == '__main__':
     for dark_theme in [True, False]:
         fig_last_time = plot_pizza_chart(order, show=False,
                                          title=title,
-                                         dark_theme=dark_theme
+                                         dark_theme=dark_theme,
+                                         source=SOURCE
                                         )
         suffix = 'dark' if dark_theme else 'light'
         fpath = os.path.join(charts_dir, 
@@ -88,7 +91,8 @@ if __name__ == '__main__':
     for dark_theme in [True, False]:
         fig_last_time = plot_pizza_chart(order, show=False,
                                          title=title,
-                                         dark_theme=dark_theme
+                                         dark_theme=dark_theme,
+                                         source=SOURCE
                                         )
         suffix = 'dark' if dark_theme else 'light'
         fpath = os.path.join(charts_dir, 
