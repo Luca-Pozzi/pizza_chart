@@ -36,5 +36,14 @@ Data collected during pizza days at [Politecnico di Milano - Polo Territoriale d
 The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate summary charts regarding our pizza days. 
 The updated summary is displayed at the top of this [`README`](README.md). Individual charts are available in [`assets/charts`](./assets/charts/).
 
+## License
+
+This project is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](LICENSE).
+
+You are free to share and adapt the material for non-commercial purposes, as long as you provide appropriate credit. You can attribute this project as
+```
+[Pizza chart](https://github.com/Luca-Pozzi/pizza_chart)
+```
+
 ## Author
 * Luca :envelope: [luca6.pozzi@mail.polimi.it](mailto:luca6.pozzi@mail.polimi.it)
