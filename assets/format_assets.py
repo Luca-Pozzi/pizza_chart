@@ -1,9 +1,9 @@
 from tkinter import Tk, filedialog
 
-import os
 from PIL import Image
+import numpy as np
 
-SIZE = 512
+SIZE = 1024
 DPI = 96
 
 def process_image(image_path, size=SIZE, dpi=DPI, overwrite=False):
@@ -21,6 +21,17 @@ def process_image(image_path, size=SIZE, dpi=DPI, overwrite=False):
     """
     img = Image.open(image_path)
     img = img.convert("RGBA")  # Ensure consistent format
+
+    # Crop the image to remove transparent edges
+    img_array = np.array(img)   # convert to numpy array
+    alpha = img_array[:, :, -1]  # extract the alpha channel
+    # Find the bounding box of non-empty content
+    rows = np.any(alpha != 0, axis=1)
+    cols = np.any(alpha != 0, axis=0)
+    first_row, last_row = np.where(rows)[0][[0, -1]]
+    first_col, last_col = np.where(cols)[0][[0, -1]]
+    # Crop the image
+    img = img.crop((first_col, first_row, last_col + 1, last_row + 1))
 
     # Check if the image is already of proper size and resolution
     if img.size == (size, size) and img.info.get("dpi") == (dpi, dpi):
