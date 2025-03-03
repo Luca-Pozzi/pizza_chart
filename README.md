@@ -1,4 +1,4 @@
-<img align="left" height="70" src="./assets/logo/logo_nobg.png" />
+<img align="left" height="70" src="./assets/logo/logo.png" />
 
 # Pizza chart
 

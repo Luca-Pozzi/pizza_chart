@@ -6,6 +6,7 @@ data/~$*.xlsx
 !data/PLACEHOLDER.md
 
 # Assets
+assets/logo/*.pptx
 assets/pizzas/pics/*
 !assets/pizzas/pics/*.png
 
