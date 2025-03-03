@@ -1,13 +1,27 @@
 # Adapted from: https://stackoverflow.com/questions/44528024/insert-image-into-pie-chart-slice/44529673#44529673
 
 import os
-import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.patches import PathPatch
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
-                    show=True, source='default'):
+THEMES = {'dark':  {'plt_style': 'dark_background',
+                   'textprops': {'color': 'white'},
+                   'wedgeprops': {'fill': False,
+                               'edgecolor': '#0d1117', # GitHub dark theme grey
+                               'linewidth': 2}
+                  },
+          'light': {'plt_style': 'default',
+                    'textprops': {'color': 'black'},
+                    'wedgeprops': {'fill': False,
+                                'edgecolor': 'w',
+                                'linewidth': 2}
+                    }
+         }
+
+def plot_pizza_chart(order, title=None, cutoff=7.0, source='default', 
+                     show=True, theme='light', plt_style=None, textprops={}, wedgeprops={}):
+    # Format data for the plot
     labels = []
     data = []
     stats = []
@@ -20,7 +34,7 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
             stats.append('{:.2f}% ({})'.format(value/tot_num*100, 
                                             value)
                         )
-        else:
+        else: # if pizza is less than cutoff, add it to `other` category
             others += value
     if others: # if is any pizza in `other` category, save it here
         labels.append('altro')
@@ -29,14 +43,15 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
                                            others)
                         )
 
-    # Create the pie chart
-    if dark_theme:
-        plt.style.use("dark_background")
-        edgecolor = '#0D1117' #'k'
-        # NOTE. The above dark grey is used to match the GitHub dark theme background.
+    # Define plot style
+    if plt_style:
+        plt.style.use(plt_style)
     else:
-        plt.style.use("default")
-        edgecolor = 'w'
+        plt.style.use(THEMES[theme]['plt_style'])
+    textprops = textprops if textprops else THEMES[theme]['textprops']
+    wedgeprops = wedgeprops if wedgeprops else THEMES[theme]['wedgeprops']    
+    
+    # Create the pie chart
     fig, ax = plt.subplots()
     if title:
         plt.title(title, fontdict={'fontsize': 18})
@@ -44,14 +59,8 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
     wedges, __ = plt.pie(data, startangle=90, 
                          labels=[lab+'\n'+stat for lab, stat in zip(labels, stats)],
                          explode = [0.1] * len(labels),
-                         wedgeprops = { 'linewidth': 2, 
-                                        "edgecolor": edgecolor,
-                                        "fill":False,
-                                        #**wedgeprops
-                                        },
-                         #textprops={'color':"grey",
-                         #           **textprops
-                         #           }
+                         wedgeprops = wedgeprops,
+                         textprops = textprops
                             )
     # Display pizza textures in chart sectors
     if not source == 'custom':
@@ -67,7 +76,7 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, dark_theme=False,
                                                                         "_")
                                              )
                             )
-            _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.45)
+            _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.225)
             wedges[i].set_zorder(10)
         except FileNotFoundError:
             print("File {} not found, '{}' slice will appear as empty".format(fn, labels[i].lower()))
