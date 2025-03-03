@@ -5,8 +5,10 @@ body {
     background-color: #0d1117; /* Dark background */
     color: #e0e0e0; /* Light gray text */
     font-family: Arial, sans-serif;
+    font-size: large;
     margin: 0;
     padding: 0;
+    text-align: center; /* Centers text */
 }
 
 /* Container for content */
@@ -20,7 +22,14 @@ body {
 }
 
 /* Headings */
-h1, h2, h3 {
+h1 {
+    color: #ffffff;
+    font-size: 3rem; /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center; /* Optional: Centers the title */
+}
+
+h2, h3 {
     color: #ffffff;
     text-align: center;
 }

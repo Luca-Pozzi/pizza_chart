@@ -17,7 +17,7 @@ Pie chart, with a salty twist.
 </picture>
 <br />
 
-More stats are available on [GitHub Pages]().
+More stats are available on [GitHub Pages](https://luca-pozzi.github.io/pizza_chart/).
 
 ## How to use
 
