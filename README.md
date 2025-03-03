@@ -2,7 +2,7 @@
 
 # Pizza chart
 
-Pie chart, with a salty twist.
+Pie charts, with a salty twist.
 
 > [!NOTE] 
 > The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. 
