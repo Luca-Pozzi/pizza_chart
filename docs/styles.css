@@ -44,7 +44,7 @@ img {
     border: none;
     background: none;
     padding: 0;
-    margin: 0 auto; /* Centers the image */
+    margin: auto; /* Centers the image */
 }
 
 .image-row {
