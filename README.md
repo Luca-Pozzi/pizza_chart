@@ -4,9 +4,9 @@
 
 Pie chart, with a salty twist.
 
-> [!IMPORTANT] 
-> The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. Icons used in this project are sourced from Flaticon and credited according to Flaticon’s attribution guidelines, which are listed in the [AUTHORS.md](./assets/AUTHORS.md) file.
-> <br>These assets are used strictly for recreational purposes. If the content infringes on any rights or you would like it removed, please reach out, and it will be promptly taken down.
+> [!NOTE] 
+> The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. 
+> Data and the following summary stats refer to the pizza days at *Polo Territoriale di Lecco, Politecnico di Milano*.
 
 <!-- Adaptation to color scheme taken from https://stackoverflow.com/questions/65413712/changing-readme-md-image-display-conditional-to-github-light-mode-dark-mode -->
 <br />
@@ -17,16 +17,25 @@ Pie chart, with a salty twist.
 </picture>
 <br />
 
+More stats are available on [GitHub Pages]().
+
 ## How to use
 
+> [!IMPORTANT]
+> `pizza_chart` comes with built-in images included, which can be freely used for non-commercial purposes (see [license](./LICENSE)).
+> In using `pizza_chart`, the user can also use contents from any source, including third-party images. **It is the user's responsibility to give proper attribution to the authors of said contents.**
+
 ### Add a pizza
-When a new pizza is added to the database, the corresponding image can be created using the [pizza_maker.ipynb](pizza_maker.ipynb) notebook. Run the notebook following the *How to use* instructions to compose and save your pizza.
+#### Upload a picture
+Take a top-view picture of your pizza, ensuring that it is entirely visible.
+Follow the tips in [ASSETS.md](./assets/ASSETS.md) to process it to the desired format, size and resolution.
+
+#### Make a pizza with `pizza_maker.ipynb`
 
 ### Add a topping
-If the topping for your pizza is not available in the [toppings](./assets/toppings/) folder, you can add a proper PNG image, with the following procedure:
-* find a suitable icon/drawing/illustration. [Flaticon](https://www.flaticon.com/) is the preferred source, but any image will do, provided that it comes with a license allowing redistribution.
-* save the image with a meaningful name in the [toppings](./assets/toppings/) folder.
-* add the acknowledgment to the authors in the [AUTHORS.md](./assets/AUTHORS.md) file.
+Get the picture of a topping by either:
+* cropping a pizza from the images in [`assets/pizza`](./assets/pizzas)
+* getting ingredients images from third-party sources ([Flaticon.com](https://www.flaticon.com/) is a great place to look, if you are down with a cartoonish style).
 
 ### Plot
 Pizza charts can be plotted via the [pizza_chart_example.ipynb](pizza_chart_example.ipynb) notebook.
@@ -37,7 +46,6 @@ The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to g
 The updated summary is displayed at the top of this [`README`](README.md). Individual charts are available in [`assets/charts`](./assets/charts/).
 
 ## License
-
 This project is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](LICENSE).
 
 You are free to share and adapt the material for non-commercial purposes, as long as you provide appropriate credit. You can attribute this project as
