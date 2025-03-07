@@ -27,6 +27,7 @@ h1 {
     font-size: 3rem; /* Adjust size as needed */
     font-weight: bold;
     text-align: center; /* Optional: Centers the title */
+    margin-top: 0;
 }
 
 h2, h3 {
@@ -47,7 +48,7 @@ a:hover {
 /* Image styling */
 img {
     display: block;
-    width: 30%;  /* Image takes 80% of the screen width */
+    width: 80%;  /* Image takes 80% of the screen width */
     max-width: 512px; /* Prevents it from becoming too large */
     height: auto; /* Maintains aspect ratio */
     border: none;
@@ -56,15 +57,53 @@ img {
     margin: auto; /* Centers the image */
 }
 
+.logo {
+    width: 10%;
+    height: auto;
+}
+@media screen and (max-width: 768px) { /* Adjusts for smaller screens */
+    .logo {
+        width: 33%; 
+    }
+    
+}
+
+@keyframes rise-and-shine {
+    0% {
+        transform: translateY(10%);
+        opacity: 0;
+        }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+}
+
 .image-row {
     display: flex;
+    flex-direction: row; /* Aligns images horizontally */
     justify-content: center; /* Centers images */
     gap: 10px; /* Adds space between images */
+    animation-name: rise-and-shine;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
 }
 
 .image-row img {
     width: 30%;
     height: auto;
+}
+@media screen and (max-width: 768px) { /* Adjusts for smaller screens */
+    /*img {
+        
+    }*/
+    .image-row {
+        flex-direction: column; /* Stacks images vertically */
+    }
+    .image-row img {
+        width: 80%;
+    }
 }
 
 /* Table styling */
