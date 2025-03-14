@@ -1,6 +1,6 @@
-'''
+"""
 Generate an image with summary graphs of pizza orders.
-'''
+"""
 
 import os
 import datetime
