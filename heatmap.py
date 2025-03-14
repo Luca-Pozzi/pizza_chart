@@ -7,10 +7,7 @@ import datetime
 from PIL import Image
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import plotly
-
-from pizza_chart import plot_pizza_chart
 
 SHOW = False # set to True for debugging
 SOURCE = 'default'  # `default` or `custom`
@@ -34,6 +31,7 @@ if __name__ == '__main__':
                                           end=now,
                                           freq='D').normalize()
     dates = dates.union([dates[-1] + (6-now.weekday())*dates.freq])
+    
     # Reindex the timeseries to a df
     heatmap_df = ts.reindex(dates,
                             fill_value=0
@@ -41,6 +39,7 @@ if __name__ == '__main__':
     heatmap_df['month'] = heatmap_df['Date'].dt.month_name()
     heatmap_df['weekday'] = heatmap_df['Date'].dt.day_name()
     heatmap_df['week'] = heatmap_df['Date'].dt.isocalendar().week
+    
     # Create a pivot table for the heatmap
     weeks_ordered = heatmap_df['week'].unique().tolist()
     heatmap_df_pivoted= heatmap_df.pivot_table(index='weekday', 
@@ -66,25 +65,36 @@ if __name__ == '__main__':
                 ygap=5,
                 showscale=False,        # disable the colorbar
                 hoverongaps=False,      # disable hover for missing values
-                colorscale='Reds',
-                colorscale=[[0.0, "rgb(128, 128, 128)"],
-                            [0.3333, "rgb(215,48,39)"],
-                            [0.6667, "rgb(244,109,67)"],
-                            [1.0, "rgb(49,54,149)"]]
+                #colorscale='Reds',
+                colorscale=[[0.00, "rgb(128, 128, 128)"],
+                            [0.25, "rgb(250, 244, 220)"],
+                            [0.50, "rgb(199, 113,   4)"],
+                            [0.75, "rgb(215, 118,   3)"],
+                            [1.00, "rgb(231,  48,  45)"]]
             ))
-
     # Customize the layout
+    aspect=0.275
+    width=1200
+    height=width*aspect
+    # Get indexes of month changes
+    xticks_idx = np.diff(heatmap_df['Date'].dt.month.to_numpy(),
+                         prepend=heatmap_df['Date'].dt.month.to_numpy()[0]
+                        ) != 0
+    xticks_labels = heatmap_df['month'].to_numpy()[xticks_idx]
+    xticks_values = heatmap_df['week'].to_numpy()[xticks_idx]
     fig.update_layout(
         #title='GitHub-like Contribution Calendar (Last Year)',
         #xaxis_title='Week of Year',
         #yaxis_title='Day of Week',
+        xaxis_tickvals=xticks_values,
+        xaxis_ticktext=xticks_labels,
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         xaxis_showgrid=False,    # hide x-axis grid lines
         yaxis_showgrid=False,    # hide y-axis grid lines
         # TODO. Manually adjust the aspect ratio
-        width=1200,              # adjust width
-        height=300,              # adjust height
+        width=width,              # adjust width
+        height=height,              # adjust height
         yaxis_scaleanchor="x",   # square tiles (i.e. x:y aspect ratio 1:1)
     )
     
