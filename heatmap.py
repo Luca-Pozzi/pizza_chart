@@ -104,4 +104,4 @@ if __name__ == '__main__':
 
     plotly.offline.plot(fig,
                         config={'displayModeBar':False}, # disable the toolbar
-                        filename= 'heatmap' + ".html")
+                        filename= 'docs/heatmap' + ".html")
