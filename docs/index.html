@@ -27,20 +27,15 @@
     </div>
 
     <!-- Display calendar/heatmap of pizza orders -->
-    <div>
-        <iframe id="heatmap-frame" src="heatmap.html"></iframe>
+    <div align="center">
+        <iframe id="heatmap-frame" src="heatmap.html" width="100%" style="border:none;"></iframe>
     </div>
     <!-- Adjust the heatmap height based on width-->
     <script> 
-        function resizeIframe() {
-            var iframe = document.getElementById('heatmap-frame');
-            if (iframe.contentWindow.document.body) {
-                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-            }
-        }
-
-        document.getElementById('heatmap-frame').onload = resizeIframe;
-        window.onresize = resizeIframe; // resizes when window is resized
+    window.onload = function() {
+        var iframe = document.getElementById('heatmap-frame');
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    };
     </script>
 
 </body>

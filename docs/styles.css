@@ -106,20 +106,6 @@ img {
     }
 }
 
-.iframe-container {
-    display: flex;
-    justify-content: center; /* centers horizontally */
-    align-items: center; /* centers vertically (if parent has height) */
-    width: 100%;
-    overflow: hidden; /* prevents unwanted scrollbars */
-}
-
-iframe {
-    width: 90%; 
-    /*max-width: 1000px;*/ /* prevents iframe from getting too big */
-    border: none;
-}
-
 /* Table styling */
 table {
     width: 100%;
