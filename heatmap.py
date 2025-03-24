@@ -54,7 +54,6 @@ if __name__ == '__main__':
     # Plot the calendar/heatmap to an HTML interactive graph
     plotly.offline.init_notebook_mode()
     # Create the heatmap
-    # NOTE. Revert vertical axis from top to 
     fig = plotly.graph_objs.Figure(
             plotly.graph_objs.Heatmap(
                 x=[str(w) for w in weeks_ordered],  # weeks on the x-axis, 
@@ -65,11 +64,16 @@ if __name__ == '__main__':
                 ygap=5,
                 showscale=False,        # disable the colorbar
                 hoverongaps=False,      # disable hover for missing values
-                #colorscale='Reds',
+                # TODO. Use the secondary box to display the order for days with >0 pizzas.
+                hovertemplate=("We had %{z} pizzas on this day" +
+                               "<extra></extra>" # remove the secondary box
+                               ),
                 colorscale=[[0.00, "rgb(128, 128, 128)"],
+                            [0.10, "rgb(250, 244, 220)"],
                             [0.25, "rgb(250, 244, 220)"],
-                            [0.50, "rgb(199, 113,   4)"],
-                            [0.75, "rgb(215, 118,   3)"],
+                            [0.40, "rgb(199, 113,   4)"],
+                            [0.65, "rgb(215, 118,   3)"],
+                            [0.80, "rgb(231,  48,  45)"],
                             [1.00, "rgb(231,  48,  45)"]]
             ))
     # Customize the layout
@@ -92,12 +96,12 @@ if __name__ == '__main__':
         plot_bgcolor='rgba(0,0,0,0)',
         xaxis_showgrid=False,    # hide x-axis grid lines
         yaxis_showgrid=False,    # hide y-axis grid lines
-        # TODO. Manually adjust the aspect ratio
-        width=width,              # adjust width
-        height=height,              # adjust height
+        width=width,             # adjust width
+        height=height,           # adjust height
         yaxis_scaleanchor="x",   # square tiles (i.e. x:y aspect ratio 1:1)
     )
-    
+    fig.update_yaxes(autorange="reversed")  # y-axis from top to bottom
+
     plotly.offline.plot(fig,
                         config={'displayModeBar':False}, # disable the toolbar
                         filename= 'heatmap' + ".html")
