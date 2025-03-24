@@ -106,6 +106,18 @@ img {
     }
 }
 
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+iframe {
+    width: 90%;
+    height: 90%;
+    border: none;
+}
+
 /* Table styling */
 table {
     width: 100%;
