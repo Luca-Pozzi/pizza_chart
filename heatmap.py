@@ -100,8 +100,13 @@ if __name__ == '__main__':
         height=height,           # adjust height
         yaxis_scaleanchor="x",   # square tiles (i.e. x:y aspect ratio 1:1)
     )
-    fig.update_yaxes(autorange="reversed")  # y-axis from top to bottom
-
+    # Update axes styling
+    # TODO. Consider creating dark and light themes. So far, a dark-themed background is assumed, as it is the only option in GitHub Pages.
+    fig.update_yaxes(autorange="reversed",  # y-axis from top to bottom
+                     color="white"
+                     )
+    fig.update_xaxes(color='white') 
+    
     plotly.offline.plot(fig,
                         config={'displayModeBar':False}, # disable the toolbar
                         filename= 'docs/heatmap' + ".html")
