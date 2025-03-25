@@ -115,6 +115,7 @@ img {
 iframe {
     width: 90%;
     height: 90%;
+    overflow: hidden;   /* prevent scrollbars */
     border: none;
 }
 
