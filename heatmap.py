@@ -104,7 +104,15 @@ if __name__ == '__main__':
     # Update axes styling
     # TODO. Consider creating dark and light themes. So far, a dark-themed background is assumed, as it is the only option in GitHub Pages.
     fig.update_yaxes(autorange="reversed")  # y-axis from top to bottom 
-    
+    fig.write_html('docs/heatmap' + ".html",
+                   #include_plotlyjs=False,
+                   full_html=False
+                   )
+    '''
     plotly.offline.plot(fig,
                         config={'displayModeBar':False}, # disable the toolbar
-                        filename= 'docs/heatmap' + ".html")
+                        include_plotlyjs=False,
+                        full_html=False,
+                        output_type='div',
+                        filename= 'docs/heatmap' + ".html")'
+    '''
