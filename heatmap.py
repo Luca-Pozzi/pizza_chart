@@ -93,7 +93,7 @@ if __name__ == '__main__':
         xaxis_tickvals=xticks_values,
         xaxis_ticktext=xticks_labels,
         paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(100,100,100,0.5)',
+        plot_bgcolor='rgba(0,0,0,0)',
         font_color='white',
         xaxis_showgrid=False,    # hide x-axis grid lines
         yaxis_showgrid=False,    # hide y-axis grid lines
