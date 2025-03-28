@@ -2,9 +2,15 @@
 <html lang="en">
 <!-- Control the content in the top miniature of the browser tab -->
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/logo.css">
+    <link rel="stylesheet" href="css/gallery.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title and icon(s) -->
     <title>pizza chart</title>
     <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/x-icon" href="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/favicon/favicon.ico" />
@@ -26,7 +32,7 @@
     <!-- ========== ABOUT ========== -->
     <div id="about">
         <h2>About</h2>
-        <p style="font-size:75%"> The <span style="font-family: 'Courier New', Courier, monospace; font-weight: bolder;"> pizza_chart</span> project began in late 2024 at B12 building of <i>Polo Territoriale di Lecco, Politecnico di Milano</i> as a lighthearted tool to visualize stats from our <i>pizza days</i> at work.<br>The project escalated a bit as few data analysis tools have been added and this webpage released. <br><br>
+        <p> The <span style="font-family: 'Courier New', Courier, monospace; font-weight: bolder;"> pizza_chart</span> project began in late 2024 at B12 building of <i>Polo Territoriale di Lecco, Politecnico di Milano</i> as a lighthearted tool to visualize stats from our <i>pizza days</i> at work.<br>The project escalated a bit as few data analysis tools have been added and this webpage released. <br><br>
         If you can’t enjoy pizza with us, we hope you can at least enjoy our pizza charts!</p>
         <!-- TODO. Discuss about the possibility to include an image carousel of us having lunch together, here or at the bottom of the page. -->
     </div>
@@ -72,9 +78,12 @@
     <!-- ========== CALENDAR ========== -->
     <div id="calendar">
         <h2> Calendar </h2>
+        <p>Scroll left and right to see when we had our pizza days in the last year.</p>
         <!-- GitHub-like calendar/heatmap of activity -->
         <!-- TODO. Figure height should be relative -->
-        <iframe src="heatmap.html" width="100%" height="600px" style="border:none;"></iframe>
+        <div name="calendar_iframe" style="margin-top: -15%;">
+        <iframe src="heatmap.html" width="100%" height="600px" style="border:none; left:500px"></iframe>
+        </div>
     </div>
 
 </body>
