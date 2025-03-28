@@ -14,23 +14,68 @@
 </head>
 <!-- Populate the page body with content -->
 <body>
+    <!-- Header -->
+    <header class="header">    
+        <a href="#about">About</a>
+        <a href="#stats">Stats</a>
+        <a href="#calendar">Calendar</a>
+    </header>
     <img class="logo" src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/logo/logo.png">
     <h1>Pizza chart</h1>
-    <p>Summary stats of the pizza days at <i>Polo Territoriale di Lecco, Politecnico di Milano</i>.</p>
-
-    <!-- Display pizza chart of last time, last month, and all time preferences -->
-    <div class="image-row">
-        <img align="left" src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/charts/last_time_dark.png" alt="Pizza chart of last order.">
-        <img align="center" src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/charts/last_month_dark.png" alt="Pizza chart of orders in the last month.">
-        <img align="right" src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/charts/all_time_dark.png" alt="Pizza chart of all orders.">
-    </div>
     
-    <!-- GitHub-like calendar/heatmap of activity -->
-    <!-- TODO. Figure height should be relative -->
-    <iframe src="heatmap.html" width="100%" height="600px" style="border:none;"></iframe>
+    <!-- ========== ABOUT ========== -->
+    <div id="about">
+        <h2>About</h2>
+        <p style="font-size:75%"> The <span style="font-family: 'Courier New', Courier, monospace; font-weight: bolder;"> pizza_chart</span> project began in late 2024 at B12 building of <i>Polo Territoriale di Lecco, Politecnico di Milano</i> as a lighthearted tool to visualize stats from our <i>pizza days</i> at work.<br>The project escalated a bit as few data analysis tools have been added and this webpage released. <br><br>
+        If you can’t enjoy pizza with us, we hope you can at least enjoy our pizza charts!</p>
+        <!-- TODO. Discuss about the possibility to include an image carousel of us having lunch together, here or at the bottom of the page. -->
+    </div>
+    <hr style="width:30%;text-align:center;margin: 0 auto; margin-bottom: 5%; margin-top:5%; ">
 
+    <!-- ========== SUMMARY STATS ========== -->
+    <div id="stats">
+        <h2> Stats </h2>
+        <p>Summary statistics of the pizza days at <i>Polo Territoriale di Lecco, Politecnico di Milano</i>.</p>
+        <!-- Display pizza chart of last time, last month, and all time preferences -->
+        <div class="gallery-container">
+            <div class="gallery-slider">
+                <button class="nav-btn prev-btn" aria-label="Previous graph">
+                    &#10094; <!-- unicode char for left-pointing arrow -->
+                </button>
+                
+                <div class="slides-container">
+                    <div class="slide">
+                        <img src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/charts/last_time_dark.png" alt="Pizza chart of last order.">
+                    </div>
+                    <div class="slide">
+                        <img src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/charts/last_month_dark.png" alt="Pizza chart of orders in the last month.">
+                    </div>
+                    <div class="slide">
+                        <img src="https://github.com/Luca-Pozzi/pizza_chart/raw/master/assets/charts/all_time_dark.png" alt="Pizza chart of all orders.">
+                    </div>
+                </div>
+                
+                <button class="nav-btn next-btn" aria-label="Next graph">
+                    &#10095; <!-- unicode char for left-pointing arrow -->
+                </button>
+            </div>
+            
+            <div class="dots-container">
+                <!-- Auto-generated with JavaScript-->
+            </div>
+        </div>
 
+        <script src="js/gallery.js"></script> <!-- JavaScript for gallery slider -->
+    </div>
+    <hr style="width:30%;text-align:center;margin: 0 auto; margin-bottom: 5%; margin-top:5%; ">
 
+    <!-- ========== CALENDAR ========== -->
+    <div id="calendar">
+        <h2> Calendar </h2>
+        <!-- GitHub-like calendar/heatmap of activity -->
+        <!-- TODO. Figure height should be relative -->
+        <iframe src="heatmap.html" width="100%" height="600px" style="border:none;"></iframe>
+    </div>
 
 </body>
 </html>
