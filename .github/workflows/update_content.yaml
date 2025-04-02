@@ -9,6 +9,8 @@ on:
       - 'assets/pizzas/*'
 jobs:
   update-files:
+    permissions:
+      contents: write # See https://stackoverflow.com/questions/72851548/permission-denied-to-github-actionsbot
     runs-on: ubuntu-latest
     
     steps:
