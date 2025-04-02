@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install -r requirements.tx
+        run: pip install -r requirements.txt
 
       - name: Run Python script to generate charts
         run: python pizza_report.py
