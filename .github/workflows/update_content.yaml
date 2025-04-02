@@ -1,4 +1,4 @@
-name: Generate Images and HTML
+name: Update content
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'data/data.xlsx'    # any change inside the `data/data.xlsx` file
-      
+      - 'assets/pizzas/*'
 jobs:
   update-files:
     runs-on: ubuntu-latest
