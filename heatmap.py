@@ -52,7 +52,7 @@ if __name__ == '__main__':
     heatmap_df_pivoted = heatmap_df_pivoted.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
     
     # Plot the calendar/heatmap to an HTML interactive graph
-    plotly.offline.init_notebook_mode()
+    #plotly.offline.init_notebook_mode()
     # Create the heatmap
     fig = plotly.graph_objs.Figure(
             plotly.graph_objs.Heatmap(
