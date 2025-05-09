@@ -1,13 +1,9 @@
-name: Update content
+name: Assets update
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - master
-    paths:
-      - 'data/data.xlsx'    # any change inside the `data/data.xlsx` file
-      - 'assets/pizzas/*'
+  workflow_call:      # make it callable from other workflows
+  workflow_dispatch:  # allow manual triggering from GitHub UI
+  
 jobs:
   update-files:
     permissions:

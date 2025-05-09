@@ -1,0 +1,19 @@
+name: Pages Build and Deployment
+
+on:
+  workflow_call:      # make it callable from other workflows
+  workflow_dispatch:  # allow manual triggering from GitHub UI
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: master
+          force_orphan: true

@@ -1,0 +1,16 @@
+name: Orchestrator
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'data/data.xlsx'    # any change inside the `data/data.xlsx` file
+      - 'assets/pizzas/*'
+
+jobs:
+  call-assets-update:
+    uses: ./.github/workflows/assets-update.yaml
+  call-deploy-pages:
+    needs: call-assets-update
+    uses: ./.github/workflows/pages-build-deployment.yaml
