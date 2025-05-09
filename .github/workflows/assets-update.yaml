@@ -6,27 +6,23 @@ on:
   
 jobs:
   update-files:
-    permissions:
-      contents: write # See https://stackoverflow.com/questions/72851548/permission-denied-to-github-actionsbot
     runs-on: ubuntu-latest
-    
     steps:
+      # Setup the environment
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-
       - name: Install dependencies
         run: pip install -r requirements.txt
-
+      # Generate the updated assets
       - name: Run Python script to generate charts
         run: python pizza_report.py
       - name: Run Python script to generate HTML heatmap
         run: python heatmap.py
-        
+      # Commit and push the changes
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
