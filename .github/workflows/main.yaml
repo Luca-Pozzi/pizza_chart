@@ -1,6 +1,7 @@
 name: Orchestrator
 
 on:
+  workflow_displatch:  # allow manual triggering from GitHub UI
   push:
     branches:
       - master
