@@ -1,0 +1,36 @@
+name: Format Pizza Assets
+
+on:
+  workflow_call:      # make it callable from other workflows
+  workflow_dispatch:  # allow manual triggering from GitHub UI
+  push:
+    branches:
+      - master
+    paths:
+      - 'assets/pizzas/*.png'
+
+jobs:
+  format-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pillow numpy
+
+      - name: Run format_assets.py
+        run: python assets/format_assets.py
+
+      - name: Commit and push formatted images
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/pizzas/*.png
+          git commit -m "Auto-format pizza images on pizza image push" || echo "No changes to commit"
+          git push
