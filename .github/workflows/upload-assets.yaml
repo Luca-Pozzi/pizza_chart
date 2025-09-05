@@ -31,4 +31,5 @@ jobs:
           git add assets/pizzas/*.png 
           git add input/assets/pizzas/*.png || true
           git commit -m "Auto-format pizza images on pizza image push" || echo "No changes to commit"
+          git pull --rebase origin ${{ github.ref_name }}
           git push

@@ -30,4 +30,5 @@ jobs:
           git add assets/charts/*.png
           git add docs/*.html
           git commit -m "Auto-update charts and HTML on data change" || echo "No changes to commit"
+          git pull --rebase origin ${{ github.ref_name }}
           git push
