@@ -13,7 +13,10 @@ SHOW = False # set to True for debugging
 SOURCE = 'default'  # `default` or `custom`
                 
 if __name__ == '__main__':
-    root = os.path.abspath(os.path.dirname(__file__))
+    root = os.path.join(
+        os.path.abspath(os.path.dirname(__file__)),
+        '..'
+        )
     charts_dir = os.path.join(root, 'assets', 'charts')
     df = pd.read_excel(os.path.join(root, 'data', 'data.xlsx'),
                        sheet_name='Orders',
