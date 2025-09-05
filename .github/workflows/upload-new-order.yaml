@@ -5,20 +5,14 @@ on:
   workflow_dispatch:  # allow manual triggering from GitHub UI
 
 jobs:
-    upload-new-order:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v3
+    upload-data:
+      uses: ./.github/workflows/upload-data.yaml
 
-        - name: Append CSV to Excel
-          uses: ./.github/workflows/upload-data.yaml
+    upload-assets:
+      uses: ./.github/workflows/upload-assets.yaml
 
-        - name: Format Pizza Images
-          uses: ./.github/workflows/upload-assets.yaml
+    content-update:
+      uses: ./.github/workflows/content-update.yaml
 
-        - name: Update Charts and HTML
-          uses: ./.github/workflows/content-update.yaml
-
-        - name: Deploy to GitHub Pages
-          uses: ./.github/workflows/pages-build-deployment.yaml
+    pages-build-deployment:
+      uses: ./.github/workflows/pages-build-deployment.yaml
