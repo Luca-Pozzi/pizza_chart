@@ -23,13 +23,13 @@ jobs:
           python scripts/format_data.py
       - name: Cleanup CSV
         run: |
-          echo "Date, Pizza, #, Pizzeria" >git data/input/upload.csv 
+          echo "Date, Pizza, #, Pizzeria" > git data/input/upload.csv 
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]@users.noreply.github.com"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/data.xlsx input/data/upload.csv
-          git commit -m "Append data from CSV" || echo "No changes to commit"
+          git commit -m "Append data from CSV" || echo "Ngit o changes to commit"
           git pull --rebase origin ${{ github.ref_name }}
           git push
