@@ -33,6 +33,7 @@ if __name__ == '__main__':
         raise Exception(f'Missing columns. Required: {required_columns}')
     # Open Excel workbook and sheet
     wb = load_workbook(excel_path)
+    wb.iso_dates = True
     ws = wb['Orders']
     # Find max row manually as `ws.max_row` may be incorrect if there are empty rows with some formatting.
     for cell in ws['A']:
