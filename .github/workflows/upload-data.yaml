@@ -1,0 +1,58 @@
+name: Append CSV to Excel
+
+on:
+  workflow_call:      # make it callable from other workflows
+  workflow_dispatch:  # allow manual triggering from GitHub UI
+
+jobs:
+  append-to-excel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pandas openpyxl
+
+      - name: Append CSV rows to Excel
+        run: |
+          import pandas as pd
+          from openpyxl import load_workbook
+
+          csv_path = 'data/input/upload.csv'
+          excel_path = 'data/data.xlsx'
+
+          # Load data
+          csv_df = pd.read_csv(csv_path)
+
+          # Validate structure
+          required_columns = {'Date', 'Pizza', '#', 'Pizzeria'}
+          if not required_columns.issubset(csv_df.columns):
+              raise Exception(f"Missing columns. Required: {required_columns}")
+
+          # Open Excel workbook and sheet
+          wb = load_workbook(excel_path)
+          ws = wb["Orders"]
+
+          # Append rows
+          for _, row in csv_df.iterrows():
+              ws.append(row.tolist())
+
+          # Save workbook
+          wb.save(excel_path)
+
+      - name: Cleanup CSV
+        run: |
+          echo "Date,Pizza,Rating,User" > data/input/upload.csv 
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]@users.noreply.github.com"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/data.xlsx data/input/upload.csv
+          git commit -m "Append data from CSV" || echo "No changes to commit"
+          git push

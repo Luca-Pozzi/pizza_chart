@@ -1,0 +1,3 @@
+# :open_file_folder: `input/assets`
+
+This folder is meant to (temporarily) host images to be moved to the permanent [`assets`](../assets/) folder. The subdirectories structure of this folder must reflect the one of the permanent `assets` folder. In particular, to upload a pizza image into the permanent `assets/pizzas` folder, one must create the `pizzas` subdirectory here, and upload the image in it.

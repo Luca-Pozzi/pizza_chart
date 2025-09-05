@@ -1,0 +1,24 @@
+name: Add new order
+
+on:
+  workflow_call:      # make it callable from other workflows
+  workflow_dispatch:  # allow manual triggering from GitHub UI
+
+jobs:
+    upload-new-order:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Append CSV to Excel
+          uses: ./.github/workflows/upload-data.yaml
+
+        - name: Format Pizza Images
+          uses: ./.github/workflows/upload-assets.yaml
+
+        - name: Update Charts and HTML
+          uses: ./.github/workflows/content-update.yaml
+
+        - name: Deploy to GitHub Pages
+          uses: ./.github/workflows/pages-build-deployment.yaml
