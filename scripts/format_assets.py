@@ -2,7 +2,6 @@ import os
 from PIL import Image
 import numpy as np
 
-DIRECTORY = "assets/pizzas"
 SIZE = 1024
 DPI = 96
 
@@ -51,11 +50,12 @@ def process_image(image_path, size=SIZE, dpi=DPI, overwrite=False):
     return True
 
 if __name__ == "__main__":
-    for filename in os.listdir(DIRECTORY):
+    fpath = os.path.abspath(os.path.dirname(__file__))
+    assets_dir = os.path.join(fpath, "..", "assets", "pizzas")
+    for filename in os.listdir(assets_dir):
         if filename.lower().endswith(".png"):
-            path = os.path.join(DIRECTORY, filename)
+            path = os.path.join(assets_dir, filename)
             process_image(path, overwrite=True)
-
     print("Processing complete.")
     
 
