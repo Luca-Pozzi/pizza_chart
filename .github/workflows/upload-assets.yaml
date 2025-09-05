@@ -21,7 +21,7 @@ jobs:
 
       - name: Move and format pizza images
         run: |
-          mv input/assets/pizza/*.png assets/pizzas/ || true
+          mv input/assets/pizzas/*.png assets/pizzas/ || true
           python scripts/format_assets.py
 
       - name: Commit and push formatted images

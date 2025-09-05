@@ -20,6 +20,7 @@ jobs:
 
       - name: Append CSV rows to Excel
         run: |
+          python -c "
           import pandas as pd
           from openpyxl import load_workbook
 
@@ -44,7 +45,7 @@ jobs:
 
           # Save workbook
           wb.save(excel_path)
-
+          "
       - name: Cleanup CSV
         run: |
           echo "Date,Pizza,Rating,User" > data/input/upload.csv 

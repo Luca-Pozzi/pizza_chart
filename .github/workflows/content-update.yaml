@@ -19,9 +19,9 @@ jobs:
         run: pip install -r requirements.txt
       # Generate the updated assets
       - name: Run Python script to generate charts
-        run: python pizza_report.py
+        run: python scripts/pizza_report.py
       - name: Run Python script to generate HTML heatmap
-        run: python heatmap.py
+        run: python scripts/heatmap.py
       # Commit and push the changes
       - name: Commit and push changes
         run: |
