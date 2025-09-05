@@ -23,7 +23,7 @@ jobs:
           python scripts/format_data.py
       - name: Cleanup CSV
         run: |
-          echo "Date, Pizza, #, Pizzeria" > git data/input/upload.csv 
+          echo "Date, Pizza, #, Pizzeria" > git input/data/upload.csv 
 
       - name: Commit changes
         run: |
