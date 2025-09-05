@@ -20,33 +20,7 @@ jobs:
 
       - name: Append CSV rows to Excel
         run: |
-          python -c "
-          import pandas as pd
-          from openpyxl import load_workbook
-
-          csv_path = 'input/data/upload.csv'
-          excel_path = 'data/data.xlsx'
-
-          # Load data
-          csv_df = pd.read_csv(csv_path)
-          csv_columns = [col.strip() for col in csv_df.columns]
-          
-          # Validate structure
-          required_columns = {'Date', 'Pizza', '#', 'Pizzeria'}
-          if not required_columns.issubset(csv_columns):
-              raise Exception(f'Missing columns. Required: {required_columns}')
-
-          # Open Excel workbook and sheet
-          wb = load_workbook(excel_path)
-          ws = wb['Orders']
-
-          # Append rows
-          for _, row in csv_df.iterrows():
-              ws.append(row.tolist())
-
-          # Save workbook
-          wb.save(excel_path)
-          "
+          python scripts/format_data.py
       - name: Cleanup CSV
         run: |
           echo "Date, Pizza, #, Pizzeria" >git data/input/upload.csv 

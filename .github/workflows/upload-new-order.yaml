@@ -10,11 +10,12 @@ jobs:
 
     upload-assets:
       uses: ./.github/workflows/upload-assets.yaml
-
+      needs: [upload-data] # wait for upload-data to finish
+      
     content-update:
       uses: ./.github/workflows/content-update.yaml
-      needs: [upload-data, upload-assets]
+      needs: [upload-assets] # wait for upload-assets to finish
 
     pages-build-deployment:
       uses: ./.github/workflows/pages-build-deployment.yaml
-      needs: [content-update]
+      needs: [content-update] # wait for content-update to finish
