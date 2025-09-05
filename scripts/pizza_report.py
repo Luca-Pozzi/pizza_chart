@@ -24,7 +24,7 @@ if __name__ == '__main__':
                        usecols=[0, 1, 2, 3])
     # Order the dataframe by date
     df['Date'] = pd.to_datetime(df['Date'],
-                                format='%y-%m-%d')
+                                format='%d/%m/%Y')
     df = df.sort_values(by='Date', ascending=False)
     now = datetime.datetime.now()
     
