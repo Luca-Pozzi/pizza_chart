@@ -33,7 +33,7 @@ jobs:
           # Validate structure
           required_columns = {'Date', 'Pizza', '#', 'Pizzeria'}
           if not required_columns.issubset(csv_df.columns):
-              raise Exception(f'Missing columns. Required: {required_columns}'')
+              raise Exception(f'Missing columns. Required: {required_columns}')
 
           # Open Excel workbook and sheet
           wb = load_workbook(excel_path)

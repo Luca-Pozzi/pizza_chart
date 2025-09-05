@@ -13,6 +13,8 @@ jobs:
 
     content-update:
       uses: ./.github/workflows/content-update.yaml
+      needs: [upload-data, upload-assets]
 
     pages-build-deployment:
       uses: ./.github/workflows/pages-build-deployment.yaml
+      needs: [content-update]
