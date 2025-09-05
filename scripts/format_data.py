@@ -12,6 +12,7 @@ fmt_dict = {
         'alignment': 'left'
     },
     '#': {
+        'number_format': '0',
         'alignment': 'center'
     },
     'Pizzeria': {
