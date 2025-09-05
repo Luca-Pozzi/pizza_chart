@@ -29,10 +29,11 @@ jobs:
 
           # Load data
           csv_df = pd.read_csv(csv_path)
-
+          csv_columns = [col.strip() for col in csv_df.columns]
+          
           # Validate structure
           required_columns = {'Date', 'Pizza', '#', 'Pizzeria'}
-          if not required_columns.issubset(csv_df.columns):
+          if not required_columns.issubset(csv_columns):
               raise Exception(f'Missing columns. Required: {required_columns}')
 
           # Open Excel workbook and sheet
@@ -48,7 +49,7 @@ jobs:
           "
       - name: Cleanup CSV
         run: |
-          echo "Date, Pizza, #, Pizzeria" > data/input/upload.csv 
+          echo "Date, Pizza, #, Pizzeria" >git data/input/upload.csv 
 
       - name: Commit changes
         run: |
