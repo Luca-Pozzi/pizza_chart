@@ -21,11 +21,13 @@ THEMES = {'dark':  {'plt_style': 'dark_background',
 
 def plot_pizza_chart(order, title=None, cutoff=7.0, source='default', 
                      show=True, theme='light', plt_style=None, textprops={}, wedgeprops={}):
+    # Ensure correct data type
+    order = [(pizza, int(value)) for pizza, value in order]
     # Format data for the plot
     labels = []
     data = []
     stats = []
-    tot_num = sum([v for __, v in order])
+    tot_num = sum(v for __, v in order)
     others = 0
     for pizza, value in order:
         if value/tot_num * 100 >= cutoff:
