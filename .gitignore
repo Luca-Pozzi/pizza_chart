@@ -1,7 +1,6 @@
 # Data
-data/*.png
-data/*.pdf
-data/*.jpg
+data/bills
+data/menus
 data/~$*.xlsx
 !data/PLACEHOLDER.md
 
