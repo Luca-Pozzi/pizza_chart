@@ -8,7 +8,7 @@ from PIL import Image
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from pizza_chart import plot_pizza_chart
+from pizza_chart import pizza_chart
 
 SHOW = False # set to True for debugging
 SOURCE = 'default'  # `default` or `custom`
@@ -36,7 +36,7 @@ if __name__ == '__main__':
             for __, row in df_last_time.iterrows()
             ]
     for theme in ['dark', 'light']:
-        fig_last_time = plot_pizza_chart(order, show=False,
+        fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
                                          theme=theme,
                                          source=SOURCE
@@ -63,7 +63,7 @@ if __name__ == '__main__':
                      sum(df_last_month['#'].loc[df_last_month['Pizza']==p])
                      ))
     for theme in ['dark', 'light']:
-        fig_last_time = plot_pizza_chart(order, show=False,
+        fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
                                          theme=theme,
                                          source=SOURCE
@@ -90,7 +90,7 @@ if __name__ == '__main__':
                      sum(df['#'].loc[df['Pizza']==p])
                      ))
     for theme in ['dark', 'light']:
-        fig_last_time = plot_pizza_chart(order, show=False,
+        fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
                                          theme=theme,
                                          source=SOURCE

@@ -19,8 +19,13 @@ THEMES = {'dark':  {'plt_style': 'dark_background',
                     }
          }
 
-def plot_pizza_chart(order, title=None, cutoff=7.0, source='default', 
-                     show=True, theme='light', plt_style=None, textprops={}, wedgeprops={}):
+ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 
+                                          '..', '..',
+                                          'assets')
+                                          )
+
+def plot(order, title=None, cutoff=7.0, source='default', 
+        show=True, theme='light', plt_style=None, textprops={}, wedgeprops={}):
     # Ensure correct data type
     order = [(pizza, int(value)) for pizza, value in order]
     # Format data for the plot
@@ -54,7 +59,7 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, source='default',
     wedgeprops = wedgeprops if wedgeprops else THEMES[theme]['wedgeprops']    
     
     # Create the pie chart
-    fig, ax = plt.subplots()
+    fig, __ = plt.subplots()
     if title:
         plt.title(title, fontdict={'fontsize': 18})
     plt.gca().axis("equal")
@@ -71,13 +76,11 @@ def plot_pizza_chart(order, title=None, cutoff=7.0, source='default',
     
     for i in range(len(labels)):
         try:
-            fn = os.path.join("assets",
-                            "pizzas",
-                            "{}{}.png".format(prefix,
-                                              labels[i].lower().replace(" ",
-                                                                        "_")
-                                             )
-                            )
+            fn = os.path.join(
+                ASSETS_DIR,
+                "pizzas",
+                "{}{}.png".format(prefix, labels[i].lower().replace(" ", "_"))
+            )
             _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.225)
             wedges[i].set_zorder(10)
         except FileNotFoundError:
