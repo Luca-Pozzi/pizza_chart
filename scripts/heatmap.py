@@ -4,12 +4,11 @@ Generate an heatmap with summary of pizza orders per day in the last year.
 
 import os
 import datetime
-from PIL import Image
 import numpy as np
 import pandas as pd
 import plotly
 
-SHOW = False # set to True for debugging
+OFFLINE = False # set to True for debugging
 SOURCE = 'default'  # `default` or `custom`
                 
 if __name__ == '__main__':
@@ -54,8 +53,10 @@ if __name__ == '__main__':
     # Reorder weekdays (Monday to Sunday)
     heatmap_df_pivoted = heatmap_df_pivoted.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
     
-    # Plot the calendar/heatmap to an HTML interactive graph
-    #plotly.offline.init_notebook_mode()
+    if OFFLINE:
+        # Plot the calendar/heatmap to an HTML interactive graph
+        plotly.offline.init_notebook_mode()
+    
     # Create the heatmap
     fig = plotly.graph_objs.Figure(
             plotly.graph_objs.Heatmap(
@@ -90,9 +91,6 @@ if __name__ == '__main__':
     xticks_labels = heatmap_df['month'].to_numpy()[xticks_idx]
     xticks_values = heatmap_df['week'].to_numpy()[xticks_idx]
     fig.update_layout(
-        #title='GitHub-like Contribution Calendar (Last Year)',
-        #xaxis_title='Week of Year',
-        #yaxis_title='Day of Week',
         xaxis_tickvals=xticks_values,
         xaxis_ticktext=xticks_labels,
         paper_bgcolor='rgba(0,0,0,0)',
@@ -114,11 +112,12 @@ if __name__ == '__main__':
                    full_html=False,
                    config = {'displayModeBar': False} # disable the toolbar
                    )
-    '''
-    plotly.offline.plot(fig,
-                        config={'displayModeBar':False}, # disable the toolbar
-                        include_plotlyjs=False,
-                        full_html=False,
-                        output_type='div',
-                        filename= 'docs/heatmap' + ".html")'
-    '''
+    if OFFLINE:
+        plotly.offline.iplot(fig)
+        # Save the heatmap as a PNG image.
+        plotly.offline.plot(fig,
+                            config={'displayModeBar':False}, # disable the toolbar
+                            include_plotlyjs=False,
+                            full_html=False,
+                            output_type='div',
+                            filename= 'docs/heatmap' + ".html")
