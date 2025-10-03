@@ -3,11 +3,11 @@ name: Pages Build and Deployment
 on:
   workflow_call:      # make it callable from other workflows
   workflow_dispatch:  # allow manual triggering from GitHub UI
-  push:
-    branches:
-      - master
-    paths:
-      - 'docs/**'  # any change inside the `docs` director
+  #push:
+  #  branches:
+  #    - master
+  #  paths:
+  #    - 'docs/**'  # any change inside the `docs` director
 
 jobs:
   deploy:
