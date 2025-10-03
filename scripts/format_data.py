@@ -18,6 +18,10 @@ if __name__ == '__main__':
         df_in.columns = cols_in  # update DataFrame columns
         for col in df_in.select_dtypes(include='object').columns:
             df_in[col] = df_in[col].str.strip()
+        # Standardize Date column to dd/mm/yyyy with leading zeros
+        df_in['Date'] = pd.to_datetime(df_in['Date'], 
+                                       dayfirst=True, errors='coerce').dt.strftime('%d/%m/%Y'
+                                       )
     if os.path.exists(csv_out_path): # data in CSV
         # Append to CSV
         if os.path.getsize(csv_out_path) > 0:
