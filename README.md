@@ -4,9 +4,11 @@
 
 Pie charts, with a salty twist.
 
-> [!NOTE] 
-> The purpose of this repository is to create a fun data visualization representing the preferred pizzas during pizza days at work. 
-> Data and the following summary stats refer to the pizza days at *Polo Territoriale di Lecco, Politecnico di Milano*.
+The purpose of this repository is to create a fun data visualization project to show our pizza preferences during pizza days at work. 
+Data and the following summary stats refer to the pizza days at *Polo Territoriale di Lecco, Politecnico di Milano*.
+
+While the data and summary stats are specific to our team, the core plotting function (`pizza_chart.plot`) and example notebooks are designed for anyone to use, adapt, and enjoy for their own pizza events or data visualization needs. See the rest of this README for more info.
+
 
 <!-- Adaptation to color scheme taken from https://stackoverflow.com/questions/65413712/changing-readme-md-image-display-conditional-to-github-light-mode-dark-mode -->
 <br />
@@ -25,7 +27,12 @@ More stats are available on [GitHub Pages](https://luca-pozzi.github.io/pizza_ch
 * [How to install](#how-to-install)
 * [How to use](#how-to-use)
   * [Examples](#examples)
-  * [Contribute]()
+  * [Contribute](#contribute)
+    * [Add pizza image](#add-a-pizza-image-)
+    * [Add topping image](#add-a-topping-image-)
+    * [Add order](#add-an-order-)
+* [License](#license)
+* [Author](#author)
 
 ## How to install
 1. Clone the repo
@@ -52,21 +59,30 @@ More stats are available on [GitHub Pages](https://luca-pozzi.github.io/pizza_ch
 <br>Lets you create new pizza images by combining base pizzas and toppings. Useful for generating assets for new pizza types, with interactive controls for customizing your pizza.
 
 ### Contribute
-#### Add a pizza :pizza:
+#### Add a pizza image :pizza:
 To add a new pizza to the assets, you have two main options:
 * **Upload a picture.** Take a top-view picture of your pizza, ensuring that it is entirely visible.
-Follow the tips in [ASSETS.md](./assets/ASSETS.md) to process it to the desired format, size and resolution.
+Follow the tips in [`assets/README.md`](./assets/README.md) to process it to the desired format, size and resolution.
 * **Make a pizza with `pizza_maker.ipynb`.** See [_Examples_ section](#make-a-pizza-with-pizza_makeripynb).
 
-#### Add a topping :tomato:
-Get the picture of a topping by either:
+#### Add a topping image :tomato:
+Users can add toppings to the assets by either:
 * cropping a pizza from the images in [`assets/pizza`](./assets/pizzas)
 * getting ingredients images from third-party sources ([Flaticon.com](https://www.flaticon.com/) is a great place to look, if you are down with a cartoonish style).
 
-### Report
+#### Add an order :clipboard:
+> [!NOTE]
+> Adding new orders is reserved for collaborators who have write access to this repo.
+
 Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.xlsx](./data/data.xlsx) Excel file.
 The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate summary charts regarding our pizza days. 
 The updated summary is displayed at the top of this [`README`](README.md). Individual charts are available in [`assets/charts`](./assets/charts/).
+
+If you are a collaborator who wants to append new data:
+* update the `input/data.csv` file 
+* add new pizza images (with background removed, see [`assets/README.md`](./assets/README.md)) in `input/assets/pizzas` (if any)
+* push your changes
+* manually trigger the _Add new order_ worflow from the _Actions_ tab on GitHub
 
 ---
 

@@ -17,12 +17,17 @@ if __name__ == '__main__':
         '..'
         )
     charts_dir = os.path.join(root, 'assets', 'charts')
-    df = pd.read_excel(os.path.join(root, 'data', 'data.xlsx'),
-                       sheet_name='Orders',
-                       usecols=[0, 1, 2, 3])
+    csv_path = os.path.join(root, 'data', 'data.csv')
+    excel_path = csv_path.replace('.csv', '.xlsx')
+    if os.path.exists(csv_path): # data in CSV
+        df = pd.read_csv(csv_path)
+    elif os.path.exists(excel_path): # data in Excel
+        df = pd.read_excel(excel_path, sheet_name='Orders', usecols=[0, 1, 2, 3])
+    else:
+        raise Exception(f"No data file found at {csv_path} or {excel_path}")
     # Order the dataframe by date
     df['Date'] = pd.to_datetime(df['Date'],
-                                format='%y-%m-%d')
+                                format='%d/%m/%Y')
     df = df.sort_values(by='Date', ascending=False)
     now = datetime.datetime.today()
 
