@@ -55,12 +55,12 @@ if __name__ == '__main__':
                     )
     
     # Plot pizza chart of last month
-    df_last_month = df[['Pizza', '#']].loc[df['Date']>(now-pd.DateOffset
-    (months=1))]
+    last_month_date = now - pd.DateOffset(months=1) + pd.Timedelta(days=1)
+    df_last_month = df[['Pizza', '#']].loc[df['Date']>=last_month_date]
     title=('Last month\n' +
-          '{} - {}'.format((now-pd.DateOffset(months=1)).strftime("%d/%m/%Y"),
+          '{} - {}'.format(last_month_date.strftime("%d/%m/%Y"),
                            now.strftime("%d/%m/%Y")
-                           )
+                            )
            )
     order = []
     for p in df_last_month['Pizza'].unique(): 
