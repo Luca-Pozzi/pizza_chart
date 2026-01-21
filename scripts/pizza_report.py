@@ -59,7 +59,8 @@ if __name__ == '__main__':
         fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
                                          theme=theme,
-                                         source=SOURCE
+                                         source=SOURCE,
+                                         cutoff=5.0
                                         )
         fpath = os.path.join(charts_dir, 
                              'last_time_{}.png'.format(theme)
@@ -82,7 +83,8 @@ if __name__ == '__main__':
         fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
                                          theme=theme,
-                                         source=SOURCE
+                                         source=SOURCE,
+                                         cutoff=5.0
                                         )
         fpath = os.path.join(charts_dir, 
                              'last_month_{}.png'.format(theme)
@@ -109,7 +111,8 @@ if __name__ == '__main__':
         fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
                                          theme=theme,
-                                         source=SOURCE
+                                         source=SOURCE,
+                                         cutoff=5.0
                                         )
         fpath = os.path.join(charts_dir, 
                              'all_time_{}.png'.format(theme)
