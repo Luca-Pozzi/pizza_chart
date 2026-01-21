@@ -60,7 +60,7 @@ if __name__ == '__main__':
                                          title=title,
                                          theme=theme,
                                          source=SOURCE,
-                                         cutoff=5.0
+                                         cutoff=3.0
                                         )
         fpath = os.path.join(charts_dir, 
                              'last_time_{}.png'.format(theme)
@@ -84,7 +84,7 @@ if __name__ == '__main__':
                                          title=title,
                                          theme=theme,
                                          source=SOURCE,
-                                         cutoff=5.0
+                                         cutoff=3.0
                                         )
         fpath = os.path.join(charts_dir, 
                              'last_month_{}.png'.format(theme)
@@ -112,7 +112,7 @@ if __name__ == '__main__':
                                          title=title,
                                          theme=theme,
                                          source=SOURCE,
-                                         cutoff=5.0
+                                         cutoff=3.0
                                         )
         fpath = os.path.join(charts_dir, 
                              'all_time_{}.png'.format(theme)
