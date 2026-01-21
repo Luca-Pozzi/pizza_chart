@@ -74,8 +74,8 @@ Users can add toppings to the assets by either:
 > [!NOTE]
 > Adding new orders is reserved for collaborators who have write access to this repo.
 
-Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.xlsx](./data/data.xlsx) Excel file.
-The [`pizza_report.py`](./pizza_report.py) gathers data from the Excel file to generate summary charts regarding our pizza days. 
+Data collected during pizza days at [Politecnico di Milano - Polo Territoriale di Lecco](https://www.polo-lecco.polimi.it/) are available in [data.csv](./data/data.csv) CSV file.
+The [`pizza_report.py`](./pizza_report.py) gathers data from the CSV files to generate summary charts regarding our pizza days. 
 The updated summary is displayed at the top of this [`README`](README.md). Individual charts are available in [`assets/charts`](./assets/charts/).
 
 If you are a collaborator who wants to append new data:
