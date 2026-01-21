@@ -24,6 +24,8 @@ ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                           'assets')
                                           )
 
+DEFAULT_PIZZA_IMG = "margherita"
+
 def plot(order, title=None, cutoff=7.0, source='default', 
         show=True, theme='light', plt_style=None, textprops={}, wedgeprops={}):
     # Ensure correct data type
@@ -84,7 +86,14 @@ def plot(order, title=None, cutoff=7.0, source='default',
             _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.225)
             wedges[i].set_zorder(10)
         except FileNotFoundError:
-            print("File {} not found, '{}' slice will appear as empty".format(fn, labels[i].lower()))
+            print("File {} not found, '{}' slice will appear as {}".format(fn, labels[i].lower(), DEFAULT_PIZZA_IMG))
+            fn = os.path.join(
+                ASSETS_DIR,
+                "pizzas",
+                "{}{}.png".format(prefix, DEFAULT_PIZZA_IMG.replace(" ", "_"))
+            )
+            _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.225)
+            wedges[i].set_zorder(10)
             continue
     if show:
         # Plot the figure

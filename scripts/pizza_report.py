@@ -12,6 +12,21 @@ from pizza_chart import pizza_chart
 
 SHOW = False # set to True for debugging
 SOURCE = 'default'  # `default` or `custom`
+
+def get_or_empty_order(df_subset):
+    """
+    Generate an order from a dataframe subset.
+    If no data, returns a mock empty order for display.
+    """
+    if df_subset.empty:
+        return [('No pizza', 1)]
+    
+    order = []
+    for p in df_subset['Pizza'].unique(): 
+        order.append((p, 
+                     sum(df_subset['#'].loc[df_subset['Pizza']==p])
+                     ))
+    return order
                 
 if __name__ == '__main__':
     root = os.path.join(
@@ -62,11 +77,7 @@ if __name__ == '__main__':
                            now.strftime("%d/%m/%Y")
                             )
            )
-    order = []
-    for p in df_last_month['Pizza'].unique(): 
-        order.append((p, 
-                     sum(df_last_month['#'].loc[df_last_month['Pizza']==p])
-                     ))
+    order = get_or_empty_order(df_last_month)
     for theme in ['dark', 'light']:
         fig_last_time = pizza_chart.plot(order, show=False,
                                          title=title,
