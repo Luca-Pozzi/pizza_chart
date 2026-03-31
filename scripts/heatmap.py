@@ -9,7 +9,7 @@ import pandas as pd
 import plotly
 
 OFFLINE = False # set to True for debugging
-SOURCE = 'default'  # `default` or `custom`
+# NOTE. Currently not working (see bottom of this script).
                 
 if __name__ == '__main__':
     root = os.path.join(
@@ -46,22 +46,57 @@ if __name__ == '__main__':
     heatmap_df['month'] = heatmap_df['Date'].dt.month_name()
     heatmap_df['weekday'] = heatmap_df['Date'].dt.day_name()
     heatmap_df['week'] = heatmap_df['Date'].dt.isocalendar().week
-    
+    # Create per-day order df
+    orders_per_day = (
+        df.groupby(['Date', 'Pizza'])['#']
+        .sum()
+        .reset_index()
+    )
+    # Convert per-day order summary to a string format for hover display
+    orders_per_day['desc'] = (
+        "• " + orders_per_day['Pizza'] + " x" + orders_per_day['#'].astype(str)
+        )
+    orders_summary = (
+        orders_per_day.groupby('Date')['desc']
+        .apply(lambda x: "<br>".join(x))
+    )
+    # Attach the per-day order summary to the heatmap df
+    heatmap_df['orders'] = heatmap_df['Date'].map(orders_summary).fillna("")
+    # Attach a string representation of the date for hover display (e.g. "01-01-2024")
+    heatmap_df['date_str'] = heatmap_df['Date'].dt.strftime('%d-%m-%Y')
     # Create a pivot table for the heatmap
     weeks_ordered = heatmap_df['week'].unique().tolist()
-    heatmap_df_pivoted= heatmap_df.pivot_table(index='weekday', 
-                           columns='week', 
-                           values='#', 
-                           aggfunc='sum', 
-                           fill_value=0
-                          )[weeks_ordered] # preserve weeks order
-    # Reorder weekdays (Monday to Sunday)
-    heatmap_df_pivoted = heatmap_df_pivoted.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
-    
-    if OFFLINE:
-        # Plot the calendar/heatmap to an HTML interactive graph
-        plotly.offline.init_notebook_mode()
-    
+    heatmap_df_pivoted= heatmap_df.pivot_table(
+        index='weekday', 
+        columns='week', 
+        values='#', 
+        aggfunc='sum', 
+        fill_value=0
+        )[weeks_ordered] # preserve weeks order
+    date_df_pivoted = heatmap_df.pivot_table(
+        index='weekday',
+        columns='week',
+        values='date_str',
+        aggfunc='first',
+        fill_value=""
+    )[weeks_ordered] # preserve weeks order
+    orders_df_pivoted = heatmap_df.pivot_table(
+        index='weekday',
+        columns='week',
+        values='orders',
+        aggfunc='first',
+        fill_value=""
+    )[weeks_ordered] # preserve weeks order
+    # Reorder weekdays (Monday to Sunday), i.e. preserve days order
+    heatmap_df_pivoted = heatmap_df_pivoted.reindex([
+        'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'
+    ])
+    date_df_pivoted = date_df_pivoted.reindex([
+        'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'
+    ])
+    orders_df_pivoted = orders_df_pivoted.reindex([
+        'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'
+    ])
     # Create the heatmap
     fig = plotly.graph_objs.Figure(
             plotly.graph_objs.Heatmap(
@@ -69,14 +104,25 @@ if __name__ == '__main__':
                                                     # preserve order
                 y=heatmap_df_pivoted.index,     # weekdays on the y-axis
                 z=heatmap_df_pivoted.values,    # values for the heatmap
+                customdata = np.dstack((
+                    date_df_pivoted.values,
+                    orders_df_pivoted.values
+                )), # value for hover
                 xgap=5,
                 ygap=5,
                 showscale=False,        # disable the colorbar
                 hoverongaps=False,      # disable hover for missing values
                 # TODO. Use the secondary box to display the order for days with >0 pizzas.
-                hovertemplate=("We had %{z} pizzas on this day" +
-                               "<extra></extra>" # remove the secondary box
-                               ),
+                #hovertemplate=("We had %{z} pizzas on this day" +
+                #               "<extra></extra>" # remove the secondary box
+                #               ),
+                hovertemplate=(
+                    "<b>%{customdata[0]}</b><br>" +
+                    "<extra>" +
+                    "We had %{z} pizzas on this day<br>" +
+                    "%{customdata[1]}" +
+                    "</extra>"
+                ),
                 colorscale=[[0.00, "rgb(128, 128, 128)"],
                             [0.10, "rgb(250, 244, 220)"],
                             [0.25, "rgb(250, 244, 220)"],
@@ -118,11 +164,18 @@ if __name__ == '__main__':
                    config = {'displayModeBar': False} # disable the toolbar
                    )
     if OFFLINE:
-        plotly.offline.iplot(fig)
-        # Save the heatmap as a PNG image.
-        plotly.offline.plot(fig,
-                            config={'displayModeBar':False}, # disable the toolbar
-                            include_plotlyjs=False,
-                            full_html=False,
-                            output_type='div',
-                            filename= 'docs/heatmap' + ".html")
+        '''
+        # NOTE. The following code is a workaround to display the heatmap in an interactive window, as plotly.offline.iplot() does not work in this script (it works in Jupyter notebooks). Unfortunately, a browser tab is opened, but the heatmap does not show up until the page times out.
+        import tempfile
+        import plotly.io as pio
+        
+        pio.renderers.default = "browser"
+        tmp_file = tempfile.NamedTemporaryFile(suffix='.html', delete=False)
+        fig.write_html(tmp_file.name,
+                   include_plotlyjs=True,
+                   full_html=True,
+                   config = {'displayModeBar': False} # disable the toolbar
+                   )
+        '''
+        
+        fig.show()
