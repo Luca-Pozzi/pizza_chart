@@ -1,0 +1,101 @@
+/* styles.css */
+
+/* General styling */
+body {
+    background-color: #0d1117; /* Dark background */
+    color: #e0e0e0; /* Light gray text */
+    font-family: Arial, sans-serif;
+    font-size: large;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 0 0 0 0;
+    text-align: left; /* Centers text */
+}
+
+/* Container for content */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1e1e1e; /* Slightly lighter dark background */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Headings */
+h1 {
+    color: #ffffff;
+    font-size: 3rem; /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center; /* Optional: Centers the title */
+    margin-top: 0;
+}
+
+h2, h3 {
+    color: #ffffff;
+    text-align: left;
+}
+
+/* Links */
+a {
+    color: #4db8ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Image styling */
+img {
+    display: block;
+    width: 80%;  /* Image takes 80% of the screen width */
+    max-width: 512px; /* Prevents it from becoming too large */
+    height: auto; /* Maintains aspect ratio */
+    border: none;
+    background: none;
+    padding: 0;
+    margin: auto; /* Centers the image */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* Buttons */
+button {
+    background-color: #4db8ff;
+    color: #121212;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #66ccff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body{
+        font-size: 80%;
+    }
+    .container {
+        width: 90%;
+    }
+}

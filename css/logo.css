@@ -1,0 +1,10 @@
+.logo {
+    width: 20%;
+    height: auto;
+}
+@media screen and (max-width: 768px) { /* Adjusts for smaller screens */
+    .logo {
+        width: 33%; 
+    }
+    
+}

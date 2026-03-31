@@ -1,0 +1,25 @@
+/* Header styling */
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: white;
+    padding-left: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 1000; /* keep header on top (i.e.foreground) */
+  }
+  
+  .header a {
+    margin: 0 5%;
+    text-decoration: none;
+    color: #0d1117;
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  .header a:hover {
+    color: #da342c;
+  }
