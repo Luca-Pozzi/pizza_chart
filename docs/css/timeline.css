@@ -5,12 +5,6 @@
     padding-left: 20px;
     border-left: 3px solid #e0e0e0;
 }
-.timeline-event {
-    margin-bottom: 30px;
-    position: relative;
-    width: 100%;
-    padding-left: 30px; /* Adjust padding to accommodate the dot */
-}
 .timeline-date {
     font-weight: bold;
     color: #e0e0e0;
@@ -57,6 +51,7 @@
     max-width: 500px;
     margin: 0 auto;
     padding: 30px 0;
+    box-sizing: border-box;
 }
 
 .timeline-vertical::before {
@@ -75,7 +70,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    min-height: 40px;
+    min-height: 40px;   
     margin: 0;
     position: relative;
 }
@@ -90,7 +85,7 @@
 
 .timeline-dot {
     position: absolute;
-    left: calc(50% - 15px); /* 15px is to adjust for dot width + border, and line width */
+    left: 50%;
     top: 50%;
     width: 20px;
     height: 20px;
@@ -106,25 +101,28 @@
     color: #fff;
     padding: 6px 16px;
     border-radius: 8px;
-    min-width: 120px;
     position: relative;
-    max-width: 220px;
+    box-sizing: border-box;
+    max-width: calc(50% - 36px);
     text-align: right;
-    font-size: 0.95em;
+    font-size: medium;
     margin-bottom: 2px;
+    overflow-wrap: break-word;
 }
 
 .timeline-event.left .timeline-content {
     position: absolute;
     right: 50%;
+    left: 0;
     margin-right: 30px;
     text-align: right;
 }
 
 .timeline-event.right .timeline-content {
     position: absolute;
+    right: 0;
     left: 50%;
-    margin-left: 0px;
+    margin-left: 30px;
     text-align: left;
 }
 
@@ -144,9 +142,9 @@
         padding: 10px 0;
     }
     .timeline-content {
-        min-width: 80px;
-        max-width: 100%;
-        font-size: 0.95em;
+        min-width: 0;
+        max-width: calc(50% - 20px);
+        font-size: smaller;
         padding: 6px 8px;
     }
     .timeline-dot {

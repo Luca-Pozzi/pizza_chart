@@ -5,7 +5,7 @@ body {
     background-color: #0d1117; /* Dark background */
     color: #e0e0e0; /* Light gray text */
     font-family: Arial, sans-serif;
-    font-size: large;
+    font-size: x-large;
     margin-left: 5vw;
     margin-right: 5vw;
     padding: 0 0 0 0;
@@ -93,7 +93,7 @@ button:hover {
 /* Responsive */
 @media (max-width: 768px) {
     body{
-        font-size: 80%;
+        font-size: small;
     }
     .container {
         width: 90%;

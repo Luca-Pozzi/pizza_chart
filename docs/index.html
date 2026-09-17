@@ -70,7 +70,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <span class="timeline-date">30/1/25</span>
-                <span class="timeline-desc">First generation of <i>last month</i>, <i>last_time</i>, <i>all time</i> charts 📊</span>
+                <span class="timeline-desc">First generation of summary stats charts 📊</span>
             </div>
         </div>
         <div class="timeline-event left">
@@ -138,12 +138,17 @@
 
     <!-- ========== CALENDAR ========== -->
     <div id="calendar">
-        <h2> Calendar </h2>
-        <p>Scroll left and right to see when we had our pizza days in the last year.</p>
-        <!-- GitHub-like calendar/heatmap of activity -->
-        <!-- TODO. Figure height should be relative -->
-        <div name="calendar_iframe" style="margin-top: -100px;">
-        <iframe src="heatmap.html" width="100%" height="600px" style="border:none; left:500px"></iframe>
+        <h2>Calendar</h2>
+        <p>Scroll left and right to see when we had our pizza days in the last year. Colored squares represent mark the days in which we had pizza. Hover on them to see the order details.</p>
+
+        <div style="max-width: 1300px; margin: 0 auto; text-align: center;">
+            <iframe 
+                src="heatmap.html"
+                width="100%"
+                height="370px"
+                style="border:none;"> 
+                <!-- NOTE. `height` must be >360 to prevent the heatmap from overflowing (vertically) -->
+            </iframe>
         </div>
     </div>
 

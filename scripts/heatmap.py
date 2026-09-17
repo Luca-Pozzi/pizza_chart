@@ -142,13 +142,15 @@ if __name__ == '__main__':
     xticks_labels = heatmap_df['month'].to_numpy()[xticks_idx]
     xticks_values = heatmap_df['week'].to_numpy()[xticks_idx]
     fig.update_layout(
-        xaxis_tickvals=xticks_values,
-        xaxis_ticktext=xticks_labels,
+        xaxis_tickvals=[], # disable x-axis ticks
+        xaxis_ticktext=[], # NOTE. Added later as annotations
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         font_color='white',
         xaxis_showgrid=False,    # hide x-axis grid lines
         yaxis_showgrid=False,    # hide y-axis grid lines
+        autosize=False,
+        margin=dict(l=0, r=0, t=0, b=0),
         width=width,             # adjust width
         height=height,           # adjust height
         yaxis_scaleanchor="x",   # square tiles (i.e. x:y aspect ratio 1:1)
@@ -157,9 +159,25 @@ if __name__ == '__main__':
     )
     # Update axes styling
     # TODO. Consider creating dark and light themes. So far, a dark-themed background is assumed, as it is the only option in GitHub Pages.
+    # Add x-axis labels as annotations, to better control their position
+    curr_week = now.isocalendar().week # current ISO week number
+    for week, month in zip(xticks_values, xticks_labels):
+        if week >= curr_week + 1:
+            x = week - (curr_week+1)
+        else:
+            x = 52 - (curr_week+1 - week)
+        fig.add_annotation(
+            x=x,
+            y=6.5,  # slightly below first row
+            text=month,
+            showarrow=False,
+            xanchor='center',
+            yanchor='top',
+            font=dict(size=12, color='white')
+        )
     fig.update_yaxes(autorange="reversed")  # y-axis from top to bottom 
     fig.write_html('docs/heatmap' + ".html",
-                   #include_plotlyjs=False,
+                   include_plotlyjs='cdn',
                    full_html=False,
                    config = {'displayModeBar': False} # disable the toolbar
                    )
