@@ -13,9 +13,3 @@ This folder contains all the pictures used to generate pizza charts.
 
 > [!TIP]
 > To remove background from your pictures, you can use free online software as [Free Image Background Remover | Adobe Express](https://www.adobe.com/express/feature/image/remove-background).
-
-* **`toppings/`**
-<br>PNG images of toppings.
-
-> [!TIP]
-> To ensure toppings have proper size and resolution, crop them from images that are `1024×1024` pixels with a resolution of `96` DPI.
