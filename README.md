@@ -31,6 +31,8 @@ More stats are available on [GitHub Pages](https://luca-pozzi.github.io/pizza_ch
     * [Add pizza image](#add-a-pizza-image-)
     * [Add topping image](#add-a-topping-image-)
     * [Add order](#add-an-order-)
+* [GitHub Actions](#github-actions)
+  * [Deploy to PythonAnywhere](#deploy-to-pythonanywhere)
 * [License](#license)
 * [Author](#author)
 
@@ -44,6 +46,7 @@ More stats are available on [GitHub Pages](https://luca-pozzi.github.io/pizza_ch
   cd <path_to_pizza_chart>
   pip install -r requirements.txt
   ```
+
 
 ## How to use
 
@@ -83,6 +86,39 @@ If you are a collaborator who wants to append new data:
 * add new pizza images (with background removed, see [`assets/README.md`](./assets/README.md)) in `input/assets/pizzas` (if any)
 * push your changes
 * manually trigger the _Add new order_ worflow from the _Actions_ tab on GitHub
+
+## GitHub Actions
+### Deploy to PythonAnywhere
+
+The [Deploy to PythonAnywhere workflow](./.github/workflows/deploy-pythonanywhere.yml)
+runs when `app/`, `src/pizza_chart/`, `requirements.txt`, or `pyproject.toml`
+changes. It deploys `app/` to `/home/<username>/data`, the package to
+`/home/<username>/src/pizza_chart`, and the two project metadata files to
+`/home/<username>`. It then installs the requirements in the configured
+PythonAnywhere virtual environment and, when configured, reloads the web app.
+The existing `/home/<username>/data/data.db` file is preserved.
+
+Before using the workflow, configure these repository secrets:
+
+* `PA_USERNAME`: PythonAnywhere username.
+* `PA_SSH_HOST`: SSH host, normally `ssh.pythonanywhere.com`.
+* `PA_SSH_KEY`: private Ed25519 key whose public key is authorized in
+  PythonAnywhere.
+* `PA_KNOWN_HOSTS`: output of
+  `ssh-keyscan -H <PA_SSH_HOST>` obtained and verified manually.
+* `PA_VENV_PATH`: absolute path to the PythonAnywhere virtual environment,
+  for example `/home/<username>/.virtualenvs/pizzachart`.
+* `PA_WEBAPP_DOMAIN`: web app host name without `https://`, for example
+  `<username>.pythonanywhere.com`.
+* `PA_API_TOKEN`: PythonAnywhere API token with permission to reload the web
+  app. If omitted, deployment still completes but the web app is not
+  reloaded automatically.
+
+The PythonAnywhere web app must already be configured to use the deployed WSGI
+module and virtual environment. The workflow does not modify WSGI
+configuration, environment variables, or persistent files such as the SQLite
+database.
+
 
 ---
 

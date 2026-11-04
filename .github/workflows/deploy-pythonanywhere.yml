@@ -1,0 +1,68 @@
+name: Deploy to PythonAnywhere
+
+on:
+  push:
+    paths:
+      - "app/**"
+      - "src/pizza_chart/**"
+      - "requirements.txt"
+      - "pyproject.toml"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      PA_USERNAME: ${{ secrets.PA_USERNAME }}
+      PA_SSH_HOST: ${{ secrets.PA_SSH_HOST }}
+      PA_VENV_PATH: ${{ secrets.PA_VENV_PATH }}
+      PA_WEBAPP_DOMAIN: ${{ secrets.PA_WEBAPP_DOMAIN }}
+      PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          PA_SSH_KEY: ${{ secrets.PA_SSH_KEY }}
+          PA_KNOWN_HOSTS: ${{ secrets.PA_KNOWN_HOSTS }}
+        run: |
+          set -eu
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$PA_SSH_KEY" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+          printf '%s\n' "$PA_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 644 "$HOME/.ssh/known_hosts"
+
+      - name: Create remote directories
+        run: |
+          set -eu
+          ssh "$PA_USERNAME@$PA_SSH_HOST" \
+            "mkdir -p /home/$PA_USERNAME/data /home/$PA_USERNAME/src/pizza_chart"
+
+      - name: Deploy application and package
+        run: |
+          set -eu
+          rsync -az --delete --exclude='data.db' app/ \
+            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/data/"
+          rsync -az --delete src/pizza_chart/ \
+            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/src/pizza_chart/"
+          scp requirements.txt pyproject.toml \
+            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/"
+
+      - name: Install dependencies
+        run: |
+          set -eu
+          ssh "$PA_USERNAME@$PA_SSH_HOST" \
+            "'$PA_VENV_PATH/bin/python' -m pip install -r /home/$PA_USERNAME/requirements.txt"
+
+      - name: Reload web application
+        if: ${{ env.PA_API_TOKEN != '' && env.PA_WEBAPP_DOMAIN != '' }}
+        run: |
+          set -eu
+          curl --fail-with-body --request POST \
+            --header "Authorization: Token $PA_API_TOKEN" \
+            "https://www.pythonanywhere.com/api/v0/user/$PA_USERNAME/webapps/$PA_WEBAPP_DOMAIN/reload/"
