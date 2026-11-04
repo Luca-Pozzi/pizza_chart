@@ -9,6 +9,11 @@ assets/logo/*.pptx
 assets/pizzas/pics/*
 !assets/pizzas/pics/*.png
 
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
