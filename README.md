@@ -103,7 +103,8 @@ Before using the workflow, configure these repository secrets:
 * `PA_USERNAME`: PythonAnywhere username.
 * `PA_SSH_HOST`: SSH host, normally `ssh.pythonanywhere.com`.
 * `PA_SSH_KEY`: private Ed25519 key whose public key is authorized in
-  PythonAnywhere.
+  PythonAnywhere. The workflow uses PythonAnywhere's SFTP subsystem for file
+  uploads.
 * `PA_KNOWN_HOSTS`: output of
   `ssh-keyscan -H <PA_SSH_HOST>` obtained and verified manually.
 * `PA_VENV_PATH`: absolute path to the PythonAnywhere virtual environment,

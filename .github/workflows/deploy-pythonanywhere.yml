@@ -37,27 +37,26 @@ jobs:
           printf '%s\n' "$PA_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
           chmod 644 "$HOME/.ssh/known_hosts"
 
-      - name: Create remote directories
-        run: |
-          set -eu
-          ssh "$PA_USERNAME@$PA_SSH_HOST" \
-            "mkdir -p /home/$PA_USERNAME/app /home/$PA_USERNAME/src/pizza_chart"
-
       - name: Deploy application and package
         run: |
           set -eu
-          rsync -az --delete --exclude='data.db' app/ \
-            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/app/"
-          rsync -az --delete src/pizza_chart/ \
-            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/src/pizza_chart/"
-          scp requirements.txt pyproject.toml \
-            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/"
+          sftp -b - "$PA_USERNAME@$PA_SSH_HOST" <<EOF
+          -mkdir /home/$PA_USERNAME/app
+          -mkdir /home/$PA_USERNAME/src
+          -mkdir /home/$PA_USERNAME/src/pizza_chart
+          put -r app/* /home/$PA_USERNAME/app/
+          put -r src/pizza_chart/* /home/$PA_USERNAME/src/pizza_chart/
+          put requirements.txt /home/$PA_USERNAME/
+          put pyproject.toml /home/$PA_USERNAME/
+          EOF
 
       - name: Install dependencies
         run: |
           set -eu
-          ssh "$PA_USERNAME@$PA_SSH_HOST" \
-            "'$PA_VENV_PATH/bin/python' -m pip install -r /home/$PA_USERNAME/requirements.txt"
+          ssh "$PA_USERNAME@$PA_SSH_HOST" <<EOF
+          set -eu
+          "$PA_VENV_PATH/bin/python" -m pip install -r "/home/$PA_USERNAME/requirements.txt"
+          EOF
 
       - name: Reload web application
         if: ${{ env.PA_API_TOKEN != '' && env.PA_WEBAPP_DOMAIN != '' }}
