@@ -92,11 +92,11 @@ If you are a collaborator who wants to append new data:
 
 The [Deploy to PythonAnywhere workflow](./.github/workflows/deploy-pythonanywhere.yml)
 runs when `app/`, `src/pizza_chart/`, `requirements.txt`, or `pyproject.toml`
-changes. It deploys `app/` to `/home/<username>/data`, the package to
+changes. It deploys `app/` to `/home/<username>/app`, the package to
 `/home/<username>/src/pizza_chart`, and the two project metadata files to
 `/home/<username>`. It then installs the requirements in the configured
 PythonAnywhere virtual environment and, when configured, reloads the web app.
-The existing `/home/<username>/data/data.db` file is preserved.
+The existing `/home/<username>/data/data.db` file is not modified.
 
 Before using the workflow, configure these repository secrets:
 
