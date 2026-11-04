@@ -54,6 +54,7 @@ def index():
 
     return """
         <h1>Pizza Day v2</h1>
+        <p>You are not logged in.</p>
         <a href="/auth/login">Login with GitHub</a>
     """
 

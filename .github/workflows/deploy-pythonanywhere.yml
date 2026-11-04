@@ -41,13 +41,13 @@ jobs:
         run: |
           set -eu
           ssh "$PA_USERNAME@$PA_SSH_HOST" \
-            "mkdir -p /home/$PA_USERNAME/data /home/$PA_USERNAME/src/pizza_chart"
+            "mkdir -p /home/$PA_USERNAME/app /home/$PA_USERNAME/src/pizza_chart"
 
       - name: Deploy application and package
         run: |
           set -eu
           rsync -az --delete --exclude='data.db' app/ \
-            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/data/"
+            "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/app/"
           rsync -az --delete src/pizza_chart/ \
             "$PA_USERNAME@$PA_SSH_HOST:/home/$PA_USERNAME/src/pizza_chart/"
           scp requirements.txt pyproject.toml \
