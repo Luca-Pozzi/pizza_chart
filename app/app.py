@@ -1,4 +1,5 @@
 import os
+import git
 import secrets
 import requests
 from pathlib import Path
@@ -140,3 +141,14 @@ def github_callback():
 def github_logout():
     session.clear()
     return redirect("/")
+
+# Pull from GitHub on webhook
+@app.route('/gh_webhook', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('path/to/git_repo')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
