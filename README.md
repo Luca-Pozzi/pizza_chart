@@ -4,6 +4,8 @@
 
 Pie charts, with a salty twist.
 
+Now on PythonAnywhere.
+
 The purpose of this repository is to create a fun data visualization project to show our pizza preferences during pizza days at work. 
 Data and the following summary stats refer to the pizza days at *Polo Territoriale di Lecco, Politecnico di Milano*.
 
