@@ -146,7 +146,7 @@ def github_logout():
 @app.route('/gh_webhook', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('path/to/git_repo')
+        repo = git.Repo('/home/pizzachart/pizza_chart')
         origin = repo.remotes.origin
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
