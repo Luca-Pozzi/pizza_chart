@@ -6,9 +6,11 @@ from pathlib import Path
 from dotenv import load_dotenv
 from urllib.parse import urlencode
 
-from flask import Flask
+from flask import Flask, render_template, send_from_directory
 from flask import redirect, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
+
+from pizza_chart.heatmap import create_heatmap_figure
 
 # Define useful paths
 ROOT_DIR = Path(__file__).parent.parent.resolve() # get the absolute path of the directory root
@@ -19,7 +21,7 @@ DATA_DIR = ROOT_DIR / "data"
 load_dotenv(ROOT_DIR / ".env") # needed for local development, but not in production where environment variables are set from /var/www/pizzachart_pythonanywhere_com_wsgi.py
 
 # Load the app
-app = Flask(__name__)
+app = Flask(__name__, static_folder=ROOT_DIR / "static")
 
 # Load the secrets from environment variables
 app.secret_key = os.environ["FLASK_SECRET_KEY"]
@@ -44,20 +46,21 @@ class TestEntry(db.Model):
 # Application home page
 @app.route("/")
 def index():
-    username = session.get("github_username")
+    heatmap_html = create_heatmap_figure(DATA_DIR / "data.csv").to_html(
+        full_html=False,
+        include_plotlyjs="cdn",
+        config={"displayModeBar": False, "responsive": True},
+    )
+    return render_template(
+        "index.html",
+        username=session.get("github_username"),
+        heatmap_html=heatmap_html,
+    )
 
-    if username:
-        return f"""
-            <h1>Pizza Day v2</h1>
-            <p>Logged in as: {username}</p>
-            <a href="/auth/logout">Logout</a>
-        """
 
-    return """
-        <h1>Pizza Day v2</h1>
-        <p>You are not logged in.</p>
-        <a href="/auth/login">Login with GitHub</a>
-    """
+@app.route("/assets/<path:filename>")
+def assets(filename):
+    return send_from_directory(ROOT_DIR / "assets", filename)
 
 # Login page
 @app.route("/auth/login")

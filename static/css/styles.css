@@ -1,0 +1,375 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    background-color: #0d1117;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    font-size: x-large;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1% 0;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header nav {
+    display: flex;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 80px);
+}
+
+.header a {
+    color: #0d1117;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: #da342c;
+}
+
+.account {
+    position: absolute;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.7rem;
+}
+
+.account a {
+    font-size: inherit;
+}
+
+.logo {
+    display: block;
+    width: 20%;
+    max-width: 512px;
+    height: auto;
+    margin: auto;
+}
+
+h1 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+}
+
+h2,
+h3 {
+    color: #fff;
+}
+
+a {
+    color: #4db8ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main > section {
+    scroll-margin-top: 85px;
+}
+
+.about-timeline-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.about-section,
+.timeline-section {
+    flex: 1 1 0;
+    min-width: 280px;
+    max-width: 500px;
+}
+
+.project-name {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
+}
+
+.timeline-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.timeline-section h2 {
+    text-align: center;
+}
+
+.timeline-vertical {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.timeline-vertical::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 0;
+    width: 4px;
+    height: 100%;
+    background: #d87807;
+    content: "";
+    transform: translateX(-50%);
+}
+
+.timeline-event {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 40px;
+}
+
+.timeline-event.left {
+    justify-content: flex-end;
+}
+
+.timeline-event.right {
+    justify-content: flex-start;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    background-color: #c76e03;
+    transform: translate(-50%, -50%);
+}
+
+.timeline-content {
+    position: absolute;
+    max-width: calc(50% - 36px);
+    overflow-wrap: break-word;
+    padding: 6px 16px;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    font-size: medium;
+}
+
+.timeline-event.left .timeline-content {
+    right: 50%;
+    left: 0;
+    margin-right: 30px;
+    text-align: right;
+}
+
+.timeline-event.right .timeline-content {
+    right: 0;
+    left: 50%;
+    margin-left: 30px;
+    text-align: left;
+}
+
+.timeline-date {
+    margin-right: 8px;
+    color: #d87807;
+    font-weight: bold;
+}
+
+.timeline-desc {
+    color: #e0e0e0;
+}
+
+hr {
+    width: 30%;
+    margin: 5% auto;
+}
+
+.gallery-container {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.slides-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+.slide {
+    min-width: 100%;
+    padding: 0 1%;
+    transition: transform 0.3s ease;
+}
+
+.slide img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    color: #121212;
+    cursor: pointer;
+    font-size: 18px;
+    transform: translateY(-50%);
+}
+
+.nav-btn:hover {
+    background: rgba(50, 50, 50, 0.7);
+    color: #fff;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+.calendar-frame {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendar-frame .plotly-graph-div {
+    width: 100%;
+    height: 330px;
+}
+
+@media (min-width: 768px) {
+    .slide {
+        min-width: calc((100% / 3) - (2% * 3));
+    }
+
+    .dots-container,
+    .nav-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .about-timeline-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: small;
+    }
+
+    .header {
+        padding: 2% 0;
+    }
+
+    .header nav {
+        gap: 20px;
+    }
+
+    .header a {
+        font-size: 0.9rem;
+    }
+
+    .account {
+        position: static;
+        gap: 8px;
+        margin-left: 16px;
+        font-size: 0.65rem;
+    }
+
+    .logo {
+        width: 33%;
+    }
+
+    .timeline-vertical {
+        max-width: 100%;
+        padding: 10px 0;
+    }
+
+    .timeline-content {
+        min-width: 0;
+        max-width: calc(50% - 20px);
+        padding: 6px 8px;
+        font-size: smaller;
+    }
+
+    .timeline-dot {
+        width: 14px;
+        height: 14px;
+    }
+}

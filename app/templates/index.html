@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza chart</title>
+    <meta name="description" content="Data visualization of pizza days at the Polo Territoriale di Lecco, Politecnico di Milano.">
+    <link rel="icon" href="{{ url_for('assets', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#stats">Stats</a>
+            <a href="#calendar">Calendar</a>
+        </nav>
+        <div class="account">
+            {% if username %}
+                <span>Logged in as {{ username }}</span>
+                <a href="{{ url_for('github_logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('github_login') }}">Login with GitHub</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <img class="logo" src="{{ url_for('assets', filename='logo/logo.png') }}" alt="Pizza chart logo">
+    <h1>Pizza chart</h1>
+
+    <main>
+        <div class="about-timeline-container">
+            <section id="about" class="about-section">
+                <h2>About</h2>
+                <p>
+                    The <span class="project-name">pizza_chart</span> project began in late 2024 at B12 building of
+                    <i>Polo Territoriale di Lecco, Politecnico di Milano</i> as a lighthearted tool to visualize stats
+                    from our <i>pizza days</i> at work.<br>
+                    The project escalated a bit as few data analysis tools have been added and this webpage released.
+                    <br><br>
+                    If you can’t enjoy pizza with us, we hope you can at least enjoy our pizza charts!
+                </p>
+            </section>
+
+            <section class="timeline-section" aria-labelledby="timeline-heading">
+                <h2 id="timeline-heading">Project Timeline</h2>
+                <div class="timeline-vertical">
+                    <div class="timeline-event left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">7/11/24</span>
+                            <span class="timeline-desc">First pizza day 🍕</span>
+                        </div>
+                    </div>
+                    <div class="timeline-event right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">26/11/24</span>
+                            <span class="timeline-desc">First repo commit 💻</span>
+                        </div>
+                    </div>
+                    <div class="timeline-event left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">14/1/25</span>
+                            <span class="timeline-desc">Logo creation 🎨</span>
+                        </div>
+                    </div>
+                    <div class="timeline-event right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">30/1/25</span>
+                            <span class="timeline-desc">First generation of summary stats charts 📊</span>
+                        </div>
+                    </div>
+                    <div class="timeline-event left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">3/3/25</span>
+                            <span class="timeline-desc">GitHub Pages website added 💻</span>
+                        </div>
+                    </div>
+                    <div class="timeline-event right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">14/3/25</span>
+                            <span class="timeline-desc">Calendar/heatmap added 📊</span>
+                        </div>
+                    </div>
+                    <div class="timeline-event left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">4/8/25</span>
+                            <span class="timeline-desc">100 pizzas! 🍕</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <hr>
+
+        <section id="stats">
+            <h2>Stats</h2>
+            <p>Summary statistics of the pizza days at <i>Polo Territoriale di Lecco, Politecnico di Milano</i>.</p>
+            <div class="gallery-container">
+                <div class="gallery-slider">
+                    <button class="nav-btn prev-btn" type="button" aria-label="Previous graph">&#10094;</button>
+                    <div class="slides-container">
+                        <div class="slide">
+                            <img src="{{ url_for('assets', filename='charts/last_time_dark.png') }}" alt="Pizza chart of last order.">
+                        </div>
+                        <div class="slide">
+                            <img src="{{ url_for('assets', filename='charts/last_month_dark.png') }}" alt="Pizza chart of orders in the last month.">
+                        </div>
+                        <div class="slide">
+                            <img src="{{ url_for('assets', filename='charts/all_time_dark.png') }}" alt="Pizza chart of all orders.">
+                        </div>
+                    </div>
+                    <button class="nav-btn next-btn" type="button" aria-label="Next graph">&#10095;</button>
+                </div>
+                <div class="dots-container" aria-label="Choose a chart"></div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="calendar">
+            <h2>Calendar</h2>
+            <p>Scroll left and right to see when we had our pizza days in the last year. Colored squares mark the days in which we had pizza. Hover on them to see the order details.</p>
+            <div class="calendar-frame">
+                {{ heatmap_html|safe }}
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/gallery.js') }}" defer></script>
+</body>
+</html>
