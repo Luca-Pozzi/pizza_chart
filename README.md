@@ -4,6 +4,9 @@
 
 Pie charts, with a salty twist.
 
+> [!NOTE]
+> This is a legacy branch of the *Pizza chart* project. The latest developments are available in the `master` branch. The currently maintained website is at [pizzachart.pythonanywhere.com](https://pizzachart.pythonanywhere.com/)
+
 The purpose of this repository is to create a fun data visualization project to show our pizza preferences during pizza days at work. 
 Data and the following summary stats refer to the pizza days at *Polo Territoriale di Lecco, Politecnico di Milano*.
 
