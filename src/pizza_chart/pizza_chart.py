@@ -27,18 +27,26 @@ ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__),
 DEFAULT_PIZZA_IMG = "margherita"
 
 def plot(order, title=None, cutoff=7.0, source='default', 
-        show=True, theme='light', plt_style=None, textprops={}, wedgeprops={}):
+        show=True, theme='light', plt_style=None, textprops={}, wedgeprops={},
+        images=None):
     # Ensure correct data type
-    order = [(pizza, int(value)) for pizza, value in order]
+    if images is not None and len(images) != len(order):
+        raise ValueError("images must contain one visual id for each pizza type")
+    order = [
+        (pizza, int(value), images[index] if images is not None else pizza)
+        for index, (pizza, value) in enumerate(order)
+    ]
     # Format data for the plot
     labels = []
+    image_labels = []
     data = []
     stats = []
-    tot_num = sum(v for __, v in order)
+    tot_num = sum(item[1] for item in order)
     others = 0
-    for pizza, value in order:
+    for pizza, value, image in order:
         if value/tot_num * 100 >= cutoff:
             labels.append(pizza)
+            image_labels.append(image)
             data.append(value)
             stats.append('{:.2f}% ({})'.format(value/tot_num*100, 
                                             value)
@@ -47,6 +55,7 @@ def plot(order, title=None, cutoff=7.0, source='default',
             others += value
     if others: # if is any pizza in `other` category, save it here
         labels.append('altro')
+        image_labels.append('altro')
         data.append(others)
         stats.append('{:.2f}% ({})'.format(others/tot_num*100, 
                                            others)
@@ -72,16 +81,18 @@ def plot(order, title=None, cutoff=7.0, source='default',
                          textprops = textprops
                             )
     # Display pizza textures in chart sectors
-    if not source == 'custom':
-        # Default images are prepended with '_'.
-        prefix = '_'
+    # Default images are prepended with '_'; custom source images are not.
+    prefix = "" if source == "custom" and images is None else "_"
     
     for i in range(len(labels)):
         try:
             fn = os.path.join(
                 ASSETS_DIR,
                 "pizzas",
-                "{}{}.png".format(prefix, labels[i].lower().replace(" ", "_"))
+                "{}{}.png".format(
+                    prefix,
+                    image_labels[i].lower().replace(" ", "_")
+                )
             )
             _img_to_pie(fn, wedges[i], xy=(0.0, 0.0), zoom=0.225)
             wedges[i].set_zorder(10)

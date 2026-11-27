@@ -4,8 +4,6 @@
 
 Pie charts, with a salty twist.
 
-Now on PythonAnywhere.
-
 The purpose of this repository is to create a fun data visualization project to show our pizza preferences during pizza days at work. 
 Data and the following summary stats refer to the pizza days at *Polo Territoriale di Lecco, Politecnico di Milano*.
 
@@ -20,20 +18,17 @@ While the data and summary stats are specific to our team, the core plotting fun
 </picture>
 <br />
 
-More stats are available on [pizzachart.pythonanywhere.com](https://pizzachart.pythonanywhere.com/).
+Check out [pizzachart.pythonanywhere.com](https://pizzachart.pythonanywhere.com/) to see more stats or build your own pizza chart!
 
 ---
 
 ## Table of contents
 * [How to install](#how-to-install)
 * [How to use](#how-to-use)
-  * [Examples](#examples)
   * [Contribute](#contribute)
     * [Add pizza image](#add-a-pizza-image-)
     * [Add topping image](#add-a-topping-image-)
     * [Add order](#add-an-order-)
-* [GitHub Actions](#github-actions)
-  * [Deploy to PythonAnywhere](#deploy-to-pythonanywhere)
 * [License](#license)
 * [Author](#author)
 
@@ -54,13 +49,6 @@ More stats are available on [pizzachart.pythonanywhere.com](https://pizzachart.p
 > [!IMPORTANT]
 > `pizza_chart` comes with built-in images included, which can be freely used for non-commercial purposes (see [license](./LICENSE)).
 > In using `pizza_chart`, the user can also use contents from any source, including third-party images. **It is the user's responsibility to give proper attribution to the authors of said contents.**
-
-### Examples
-* [`pizza_chart.ipynb`](./examples/pizza_chart.ipynb)
-<br>Demonstrates how to use the `pizza_chart.plot` function to visualize pizza orders as a custom pie chart. Shows how to specify your order and customize the chart’s appearance.
-
-* [`pizza_maker.ipynb`](./examples/pizza_maker.ipynb)
-<br>Lets you create new pizza images by combining base pizzas and toppings. Useful for generating assets for new pizza types, with interactive controls for customizing your pizza.
 
 ### Contribute
 #### Add a pizza image :pizza:

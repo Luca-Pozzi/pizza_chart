@@ -12,6 +12,7 @@
     <header class="header">
         <nav aria-label="Main navigation">
             <a href="#about">About</a>
+            <a href="#create-chart">Create a chart</a>
             <a href="#stats">Stats</a>
             <a href="#calendar">Calendar</a>
         </nav>
@@ -100,6 +101,89 @@
 
         <hr>
 
+        <section id="create-chart" aria-labelledby="create-chart-heading">
+            <h2 id="create-chart-heading">Create your pizza chart</h2>
+            <p>Add pizza types, choose a visual for each one, and draw a chart. No login is needed.</p>
+            {% if error %}
+                <p class="form-error" role="alert">{{ error }}</p>
+            {% endif %}
+            <form class="custom-chart-form" action="{{ url_for('draw_custom_chart') }}" method="post">
+                <div id="pizza-rows">
+                    {% for row in pizza_rows %}
+                        <div class="pizza-row">
+                            <label>
+                                Pizza type
+                                <input type="text" name="pizza_name" maxlength="60" required
+                                       value="{{ row.name }}" placeholder="e.g. Margherita">
+                            </label>
+                            <label>
+                                Number of pizzas
+                                <input type="number" name="pizza_count" min="1" max="100000" required
+                                       value="{{ row.count }}" placeholder="e.g. 4">
+                            </label>
+                            <label>
+                                Visual
+                                <select name="pizza_visual" required>
+                                    {% for visual in pizza_visuals %}
+                                        <option value="{{ visual.id }}"
+                                                data-image-url="{{ url_for('assets', filename='pizzas/_' ~ visual.id ~ '.png') }}"
+                                                {% if row.visual == visual.id %}selected{% endif %}>
+                                            {{ visual.label }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            <img class="pizza-visual-preview"
+                                 src="{{ url_for('assets', filename='pizzas/_' ~ row.visual ~ '.png') }}"
+                                 alt="Selected pizza visual">
+                            <button class="remove-pizza-row" type="button" aria-label="Remove pizza type">Remove</button>
+                        </div>
+                    {% endfor %}
+                </div>
+                <template id="pizza-row-template">
+                    <div class="pizza-row">
+                        <label>
+                            Pizza type
+                            <input type="text" name="pizza_name" maxlength="60" required placeholder="e.g. Margherita">
+                        </label>
+                        <label>
+                            Number of pizzas
+                            <input type="number" name="pizza_count" min="1" max="100000" required placeholder="e.g. 4">
+                        </label>
+                        <label>
+                            Visual
+                            <select name="pizza_visual" required>
+                                {% for visual in pizza_visuals %}
+                                    <option value="{{ visual.id }}"
+                                            data-image-url="{{ url_for('assets', filename='pizzas/_' ~ visual.id ~ '.png') }}"
+                                            {% if visual.id == "margherita" %}selected{% endif %}>
+                                        {{ visual.label }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <img class="pizza-visual-preview"
+                             src="{{ url_for('assets', filename='pizzas/_margherita.png') }}"
+                             alt="Selected pizza visual">
+                        <button class="remove-pizza-row" type="button" aria-label="Remove pizza type">Remove</button>
+                    </div>
+                </template>
+                <div class="custom-chart-actions">
+                    <button id="add-pizza-row" type="button">Add pizza type</button>
+                    <button type="submit">Draw your pizza chart</button>
+                </div>
+            </form>
+
+            {% if custom_chart %}
+                <div class="custom-chart-result">
+                    <h3>Your pizza chart</h3>
+                    <img src="data:image/png;base64,{{ custom_chart }}" alt="Pizza chart generated from your input">
+                </div>
+            {% endif %}
+        </section>
+
+        <hr>
+
         <section id="stats">
             <h2>Stats</h2>
             <p>Summary statistics of the pizza days at <i>Polo Territoriale di Lecco, Politecnico di Milano</i>.</p>
@@ -134,5 +218,6 @@
         </section>
     </main>
     <script src="{{ url_for('static', filename='js/gallery.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/custom_chart.js') }}" defer></script>
 </body>
 </html>

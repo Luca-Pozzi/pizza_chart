@@ -311,6 +311,105 @@ hr {
     height: 330px;
 }
 
+.custom-chart-form {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pizza-row {
+    display: grid;
+    grid-template-columns: minmax(160px, 2fr) minmax(130px, 1fr) minmax(180px, 1.5fr) 64px auto;
+    align-items: end;
+    gap: 16px;
+    margin: 16px 0;
+    padding: 16px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: #161b22;
+}
+
+.pizza-row label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.75em;
+}
+
+.pizza-row input,
+.pizza-row select,
+.custom-chart-actions button,
+.remove-pizza-row {
+    min-height: 40px;
+    padding: 8px 10px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.pizza-row input,
+.pizza-row select {
+    min-width: 0;
+    background: #fff;
+    color: #111;
+    font-size: 0.8em;
+}
+
+.pizza-visual-preview {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.remove-pizza-row,
+.custom-chart-actions button {
+    cursor: pointer;
+}
+
+.custom-chart-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.custom-chart-actions button {
+    background: #fff;
+    color: #111;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.custom-chart-actions button[type="submit"] {
+    border-color: #da342c;
+    background: #da342c;
+    color: #fff;
+}
+
+.custom-chart-actions button:disabled,
+.remove-pizza-row:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.form-error {
+    max-width: 1000px;
+    margin: 16px auto;
+    color: #ff8a80;
+}
+
+.custom-chart-result {
+    margin: 32px auto 0;
+    text-align: center;
+}
+
+.custom-chart-result img {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto;
+}
+
 @media (min-width: 768px) {
     .slide {
         min-width: calc((100% / 3) - (2% * 3));
@@ -336,10 +435,12 @@ hr {
     }
 
     .header {
+        flex-wrap: wrap;
         padding: 2% 0;
     }
 
     .header nav {
+        flex-wrap: wrap;
         gap: 20px;
     }
 
@@ -373,5 +474,18 @@ hr {
     .timeline-dot {
         width: 14px;
         height: 14px;
+    }
+
+    .pizza-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: center;
+    }
+
+    .pizza-visual-preview {
+        justify-self: center;
+    }
+
+    .custom-chart-actions {
+        flex-direction: column;
     }
 }
