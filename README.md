@@ -11,7 +11,6 @@ Data and the following summary stats refer to the pizza days at *Polo Territoria
 
 While the data and summary stats are specific to our team, the core plotting function (`pizza_chart.plot`) and example notebooks are designed for anyone to use, adapt, and enjoy for their own pizza events or data visualization needs. See the rest of this README for more info.
 
-
 <!-- Adaptation to color scheme taken from https://stackoverflow.com/questions/65413712/changing-readme-md-image-display-conditional-to-github-light-mode-dark-mode -->
 <br />
 <picture>
@@ -21,7 +20,7 @@ While the data and summary stats are specific to our team, the core plotting fun
 </picture>
 <br />
 
-More stats are available on [GitHub Pages](https://luca-pozzi.github.io/pizza_chart/).
+More stats are available on [pizzachart.pythonanywhere.com](https://pizzachart.pythonanywhere.com/).
 
 ---
 
